@@ -13,7 +13,16 @@
 <body>
     <div class="wrapper-main">
         <!-- NAV -->
-        {{ include('OkeanosCoreBundle::menu.html.twig') }}
+        <nav class="navbar">
+            <p class="logo">OKEANOS</p>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="{{ path('okeanos_core_homepage') }}" class="navbar-link{% block activePageHome %}{% endblock %}">HOME</a></li>
+                <li class="navbar-item"><a href="{{ path('okeanos_core_news') }}" class="navbar-link{% block activePageNews %}{% endblock %}">NEWS</a></li>
+                <li class="navbar-item"><a href="{{ path('okeanos_core_actions') }}" class="navbar-link{% block activePageActions %}{% endblock %}">ACTIONS</a></li>
+                <li class="navbar-item"><a href="{{ path('okeanos_core_donate') }}" class="navbar-link{% block activePageDonate %}{% endblock %}">DONATE</a></li>
+                <li class="navbar-item"><a href="{{ path('okeanos_core_login') }}" class="navbar-link{% block activePageLogin %}{% endblock %}">LOGIN</a></li>
+            </ul>
+        </nav>
         <!-- /END NAV -->
 
         <!-- CONTAINER -->
@@ -22,7 +31,10 @@
         <!-- /END CONTAINER -->
 
         <!-- FOOTER -->
-        {{ include('OkeanosCoreBundle::footer.html.twig') }}
+        <footer class="footer">
+            <p>Okeanos &copy; 2018</p>
+            <p>Developed by PALM</p>
+        </footer>
         <!-- /END FOOTER -->
     </div>
 </body>
