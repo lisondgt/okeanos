@@ -1,0 +1,7 @@
+okeanos_core:
+    resource: "@OkeanosCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

@@ -1,0 +1,3 @@
+okeanos_core_homepage:
+    path:     /
+    defaults: { _controller: OkeanosCoreBundle:Default:index }
