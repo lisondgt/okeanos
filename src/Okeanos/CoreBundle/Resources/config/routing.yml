@@ -1,3 +1,24 @@
 okeanos_core_homepage:
-    path:     /
-    defaults: { _controller: OkeanosCoreBundle:Default:index }
+    path:    /
+    defaults:
+        _controller: OkeanosCoreBundle:Default:index
+
+okeanos_core_news:
+    path:    /news
+    defaults:
+        _controller: OkeanosCoreBundle:Default:news
+
+okeanos_core_actions:
+    path:    /actions
+    defaults:
+        _controller: OkeanosCoreBundle:Default:actions
+
+okeanos_core_donate:
+    path:    /donate
+    defaults:
+        _controller: OkeanosCoreBundle:Default:donate
+
+okeanos_core_login:
+    path:    /login
+    defaults:
+        _controller: OkeanosCoreBundle:Default:login
