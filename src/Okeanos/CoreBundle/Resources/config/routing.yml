@@ -8,15 +8,35 @@ okeanos_core_news:
     defaults:
         _controller: OkeanosCoreBundle:Default:news
 
+okeanos_core_newsView:
+    path:    /news/{year}/{month}/{day}/{id}
+    defaults:
+        _controller: OkeanosCoreBundle:Default:newsView
+    requirements:
+        year: \d{4}
+        month: \d{2}
+        day: \d{2}
+        id: \d+
+
 okeanos_core_actions:
     path:    /actions
     defaults:
         _controller: OkeanosCoreBundle:Default:actions
 
+okeanos_core_actionsView:
+    path:    /actions/{id}
+    defaults:
+        _controller: OkeanosCoreBundle:Default:actionsView
+    requirements:
+        id: \d+
+
 okeanos_core_donate:
-    path:    /donate
+    path:    /donate/{id}
     defaults:
         _controller: OkeanosCoreBundle:Default:donate
+        id: 1
+    requirements:
+        id: \d+
 
 okeanos_core_login:
     path:    /login

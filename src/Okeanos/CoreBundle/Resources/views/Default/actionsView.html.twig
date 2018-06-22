@@ -1,0 +1,7 @@
+{# src/Okeanos/CoreBundle/Resources/views/Default/actionsView.html.twig #}
+{% extends 'OkeanosCoreBundle::layout.html.twig' %}
+{% block title %}{{ action }} | Actions | {{ parent() }}{% endblock %}
+{% block activePageActions %} navbar-link-active{% endblock %}
+{% block container %}
+    <a href="{{ path('okeanos_core_donate', { 'id': action }) }}">Donate</a>
+{% endblock %}
