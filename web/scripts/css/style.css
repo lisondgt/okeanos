@@ -1,3 +1,8 @@
+@font-face{
+    font-family: 'CaviarDreams';
+    src: url('../../medias/fonts/caviar_dreams/CaviarDreams.ttf') format('OpenType');
+}
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -19,6 +24,7 @@ body{
 }
 
 .navbar{
+    font-family: 'CaviarDreams';
     width: 100%;
     display: grid;
     grid-template-columns: auto 1fr;
