@@ -35,6 +35,11 @@ okeanos_core_actionsView:
     requirements:
         id: \d+
 
+okeanos_core_actionsAdd:
+    path:    /actions/add
+    defaults:
+        _controller: OkeanosCoreBundle:Default:actionsAdd
+
 okeanos_core_donate:
     path:    /donate/{id}
     defaults:

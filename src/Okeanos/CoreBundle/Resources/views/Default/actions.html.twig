@@ -2,3 +2,23 @@
 {% extends 'OkeanosCoreBundle::layout.html.twig' %}
 {% block title %}Actions | {{ parent() }}{% endblock %}
 {% block activePageActions %} navbar-link-active{% endblock %}
+{% block container %}
+    {% for action in actions %}
+        <p>
+            Action's name : {{ action.name }}
+        </p>
+        <p>
+            Description : {{ action.descript }}
+        </p>
+        <p>
+            Action's goal : {{ action.goal }}
+        </p>
+        <p>
+            Read more : <a href="{{ path('okeanos_core_actionsView', { 'id': action.id }) }}">Click here</a>
+        </p>
+        <p>
+            Fund this action : <a href="{{ path('okeanos_core_donate', { 'id': action.id }) }}">Click here</a>
+        </p>
+        <hr>
+    {% endfor %}
+{% endblock %}
