@@ -2,3 +2,20 @@
 {% extends 'OkeanosCoreBundle::layout.html.twig' %}
 {% block title %}News | {{ parent() }}{% endblock %}
 {% block activePageNews %} navbar-link-active{% endblock %}
+{% block container %}
+    {% for new in news %}
+        <p>
+            Titre : {{ new.title }}
+        </p>
+        <p>
+            Description : {{ new.descript }}
+        </p>
+        <p>
+            Date : {{ new.date|date('d/m/Y') }}
+        </p>
+        <p>
+            Read this news : <a href="{{ path('okeanos_core_newsView', { 'year': new.date|date('Y'), 'month': new.date|date('m'), 'day': new.date|date('d'), 'id': new.id }) }}">read</a>
+        </p>
+        <hr>
+    {% endfor %}
+{% endblock %}

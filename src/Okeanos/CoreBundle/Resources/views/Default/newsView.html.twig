@@ -1,4 +1,15 @@
 {# src/Okeanos/CoreBundle/Resources/views/Default/newsView.html.twig #}
 {% extends 'OkeanosCoreBundle::layout.html.twig' %}
-{% block title %}1 Article | News | {{ parent() }}{% endblock %}
+{% block title %}{{ news.title }} | News | {{ parent() }}{% endblock %}
 {% block activePageNews %} navbar-link-active{% endblock %}
+{% block container %}
+    <p>
+        Title : {{ news.title }}
+    </p>
+    <p>
+        Description : {{ news.descript }}
+    </p>
+    <p>
+        Date : {{ news.date|date('d/m/Y') }}
+    </p>
+{% endblock %}

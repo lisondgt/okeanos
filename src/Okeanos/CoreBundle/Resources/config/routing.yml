@@ -18,6 +18,11 @@ okeanos_core_newsView:
         day: \d{2}
         id: \d+
 
+okeanos_core_newsAdd:
+    path:    /news/add
+    defaults:
+        _controller: OkeanosCoreBundle:Default:newsAdd
+
 okeanos_core_actions:
     path:    /actions
     defaults:
