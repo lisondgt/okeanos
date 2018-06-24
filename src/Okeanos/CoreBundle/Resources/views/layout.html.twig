@@ -7,24 +7,32 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}Okeanos{% endblock %}</title>
     {% block css %}
-        <link rel="stylesheet" href="{{ asset('scripts/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('scripts/css/bootstrap/bootstrap-grid.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('scripts/css/bootstrap/bootstrap-reboot.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('scripts/css/bootstrap/bootstrap.min.css') }}">
     {% endblock %}
 </head>
 <body>
-    <div class="wrapper-main">
-        <!-- NAV -->
-        <nav class="navbar">
-            <p class="logo">OKEANOS</p>
-            <ul class="navbar-menu">
-                <li class="navbar-item"><a href="{{ path('okeanos_core_homepage') }}" class="navbar-link{% block activePageHome %}{% endblock %}">HOME</a></li>
-                <li class="navbar-item"><a href="{{ path('okeanos_core_news') }}" class="navbar-link{% block activePageNews %}{% endblock %}">NEWS</a></li>
-                <li class="navbar-item"><a href="{{ path('okeanos_core_actions') }}" class="navbar-link{% block activePageActions %}{% endblock %}">ACTIONS</a></li>
-                <li class="navbar-item"><a href="{{ path('okeanos_core_donate') }}" class="navbar-link{% block activePageDonate %}{% endblock %}">DONATE</a></li>
-                <li class="navbar-item"><a href="{{ path('okeanos_core_login') }}" class="navbar-link{% block activePageLogin %}{% endblock %}">LOGIN</a></li>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a href="{{ path('okeanos_core_homepage') }}" class="navbar-brand">OKEANOS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav" style="justify-content: end;">
+            <ul class="navbar-nav">
+                <li class="nav-item{% block activePageHome %}{% endblock %}"><a href="{{ path('okeanos_core_homepage') }}" class="nav-link">Home</a></li>
+                <li class="nav-item{% block activePageNews %}{% endblock %}"><a href="{{ path('okeanos_core_news') }}" class="nav-link">News</a></li>
+                <li class="nav-item{% block activePageActions %}{% endblock %}"><a href="{{ path('okeanos_core_actions') }}" class="nav-link">Actions</a></li>
+                <li class="nav-item{% block activePageDonate %}{% endblock %}"><a href="{{ path('okeanos_core_donate') }}" class="nav-link">Donate</a></li>
+                <li class="nav-item{% block activePageLogin %}{% endblock %}" style="margin-right: .5rem;"><a href="{{ path('okeanos_core_login') }}" class="nav-link">Login</a></li>
             </ul>
-        </nav>
-        <!-- /END NAV -->
-
+        </div>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
+    <div class="wrapper-main">
         <!-- CONTAINER -->
         {% block container %}
         {% endblock %}
@@ -37,5 +45,10 @@
         </footer>
         <!-- /END FOOTER -->
     </div>
+
+    <!-- JS SCRIPTS -->
+    <script src="{{ asset('scripts/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('scripts/js/bootstrap/bootstrap.min.js') }}"></script>
+    <!-- /END JS SCRIPTS -->
 </body>
 </html>

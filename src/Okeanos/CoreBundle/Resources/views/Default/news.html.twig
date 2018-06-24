@@ -1,7 +1,7 @@
 {# src/Okeanos/CoreBundle/Resources/views/Default/news.html.twig #}
 {% extends 'OkeanosCoreBundle::layout.html.twig' %}
 {% block title %}News | {{ parent() }}{% endblock %}
-{% block activePageNews %} navbar-link-active{% endblock %}
+{% block activePageNews %} active{% endblock %}
 {% block container %}
     {% for new in news %}
         <p>
