@@ -19,7 +19,7 @@ okeanos_core_newsView:
         id: \d+
 
 okeanos_core_newsAdd:
-    path:    /news/add
+    path:    /admin/news/add
     defaults:
         _controller: OkeanosCoreBundle:Default:newsAdd
 
@@ -36,7 +36,7 @@ okeanos_core_actionsView:
         id: \d+
 
 okeanos_core_actionsAdd:
-    path:    /actions/add
+    path:    /admin/actions/add
     defaults:
         _controller: OkeanosCoreBundle:Default:actionsAdd
 
@@ -52,3 +52,13 @@ okeanos_core_login:
     path:    /login
     defaults:
         _controller: OkeanosCoreBundle:Default:login
+
+okeanos_core_users:
+    path:    /admin/users
+    defaults:
+        _controller: OkeanosCoreBundle:Default:users
+
+okeanos_core_usersAdd:
+    path:    /admin/users/add
+    defaults:
+        _controller: OkeanosCoreBundle:Default:usersAdd

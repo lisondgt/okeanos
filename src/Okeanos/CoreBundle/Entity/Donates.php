@@ -13,6 +13,18 @@ use Doctrine\ORM\Mapping as ORM;
 class Donates
 {
     /**
+     * @ORM\ManyToOne(targetEntity="Okeanos\CoreBundle\Entity\Users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Okeanos\CoreBundle\Entity\Actions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $action;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")

@@ -11,7 +11,7 @@
             Description : {{ action.descript }}
         </p>
         <p>
-            Action's goal : {{ action.goal }}
+            Action's goal : {{ action.goal|number_format(2, ',', ' ') }}€
         </p>
         <p>
             Read more : <a href="{{ path('okeanos_core_actionsView', { 'id': action.id }) }}">Click here</a>

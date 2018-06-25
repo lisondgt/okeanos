@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class News
 {
     /**
+     * @ORM\ManyToOne(targetEntity="Okeanos\CoreBundle\Entity\Users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -155,5 +161,28 @@ class News
     {
         return $this->date;
     }
-}
 
+    /**
+     * Set user
+     *
+     * @param \Okeanos\CoreBundle\Entity\Users $user
+     *
+     * @return News
+     */
+    public function setUser(\Okeanos\CoreBundle\Entity\Users $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Okeanos\CoreBundle\Entity\Users
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+}
