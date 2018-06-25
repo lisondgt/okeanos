@@ -64,6 +64,11 @@ body{
     background-color: rgba(35, 220, 35, 1);
 }
 
+h1{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
 .footer{
     position: absolute;
     right: 0;
