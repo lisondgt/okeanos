@@ -10,7 +10,7 @@
         Description : {{ action.descript }}
     </p>
     <p>
-        Goal : {{ action.goal }}
+        Goal : {{ action.goal|number_format(2, ',', ' ') }}€
     </p>
     <p>
         Fund this action : <a href="{{ path('okeanos_core_donate', { 'id': action.id }) }}">Donate</a>

@@ -286,5 +286,28 @@ class Users
     {
         return $this->permission;
     }
-}
 
+    /**
+     * Set mail
+     *
+     * @param string $mail
+     *
+     * @return Users
+     */
+    public function setMail($mail)
+    {
+        $this->mail = $mail;
+
+        return $this;
+    }
+
+    /**
+     * Get mail
+     *
+     * @return string
+     */
+    public function getMail()
+    {
+        return $this->mail;
+    }
+}

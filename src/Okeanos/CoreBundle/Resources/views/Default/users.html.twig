@@ -1,0 +1,35 @@
+{# src/Okeanos/CoreBundle/Resources/views/Default/users.html.twig #}
+{% extends 'OkeanosCoreBundle::layout.html.twig' %}
+{% block title %}Users | {{ parent() }}{% endblock %}
+{% block container %}
+    {% for user in users %}
+        <p>
+            ID : {{ user.id }}
+        </p>
+        <p>
+            Login : {{ user.login }}
+        </p>
+        <p>
+            Password : {{ user.pwd }}
+        </p>
+        <p>
+            Mail : {{ user.mail }}
+        </p>
+        <p>
+            First name : {{ user.fname }}
+        </p>
+        <p>
+            Last name : {{ user.lname }}
+        </p>
+        <p>
+            Age : {{ user.age }}
+        </p>
+        <p>
+            Country : {{ user.country }}
+        </p>
+        <p>
+            Picture : {{ user.img }}
+        </p>
+        <hr>
+    {% endfor %}
+{% endblock %}
