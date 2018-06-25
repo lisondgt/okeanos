@@ -9,6 +9,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class DefaultController extends Controller
 {
@@ -191,6 +199,24 @@ class DefaultController extends Controller
         return new Response($content);
     }
 
+    public function signupAction()
+    {
+        $content = $this
+            ->get('templating')
+            ->render('OkeanosCoreBundle:Default:signup.html.twig');
+        
+        return new Response($content);
+    }
+
+    public function profileAction()
+    {
+        $content = $this
+            ->get('templating')
+            ->render('OkeanosCoreBundle:Default:profile.html.twig');
+        
+        return new Response($content);
+    }
+
     public function usersAction()
     {
         $repository = $this
@@ -209,35 +235,53 @@ class DefaultController extends Controller
     }
 
     public function usersAddAction(Request $request){
-        // On récupère l'EntityManager
-        $em = $this->getDoctrine()->getManager();
-
-        // Création de l'entité Advert
+        // On crée un objet Users
         $user = new Users();
-        $user->setLogin('pfischer');
-        $user->setPwd('d1ae23208f68bee3c6a70528e95bad743ae6261b');
-        $user->setMail('fischer.pascal@wanadoo.fr');
-        $user->setPermission('admin');
+        
+        // On crée le FormBuilder grâce au service form factory
+        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $user);
 
-        $em->persist($user);
+        // On ajoute les champs de l'entité que l'on veut à notre formulaire
+        $formBuilder
+            ->add('login', TextType::class)
+            ->add('pwd', PasswordType::class)
+            ->add('mail', EmailType::class)
+            ->add('permission', TextType::class)
+            ->add('save', SubmitType::class)
+        ;
+        
+        // A partir du formBuilder, on génère le formulaire
+        $form = $formBuilder->getForm();
 
-        // On déclenche l'enregistrement
-        $em->flush();
+        // Si la requête est en POST
+        if($request->isMethod('POST'))
+        {
+            // On fait le lien Requête <-> Formulaire
+            // A partir de maintenant, la variable $user contient les valeurs entrées dans le formulaire par le visiteur
+            $form->handleRequest($request);
 
-        // La gestion d'un formulaire est particulière mais l'idée est la suivante :
+            // On vérifie que les valeurs entrées sont correctes
+            if($form->isValid())
+            {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
 
-        // Si la requête est en POST, c'est que le visiteur a soumis le formulaire
-        if($request->isMethod('POST')){
-            // Ici, on s'occupera de la création et de la gestion du formulaire
-            $request->getSession()->getFlashBag()->add('notice', 'User bien enregistré');
+                $request->getSession()->getFlashBag()->add('notice', 'Utilisateur bien enregistré');
 
-            // Puis on redirige vers la page de visualisation de cette annonce
-            return $this->redirectToRoute('okeanos_core_usersView', array('id' => $user->getId()));
+                // On redirige vers la page du profile utilisateur
+                return $this->redirectToRoute('okeanos_core_profile', array(
+                    'id' => $user->getId()
+                ));
+            }
         }
 
+        // On passe la méthode createView() du formulaire à la vue afin qu'elle puisse afficher le formulaire toute seule
         $content = $this
             ->get('templating')
-            ->render('OkeanosCoreBundle:Default:usersAdd.html.twig');
+            ->render('OkeanosCoreBundle:Default:usersAdd.html.twig', array(
+                'form' => $form->createView(),
+            ));
         
         return new Response($content);
     }

@@ -53,6 +53,16 @@ okeanos_core_login:
     defaults:
         _controller: OkeanosCoreBundle:Default:login
 
+okeanos_core_signup:
+    path:    /signup
+    defaults:
+        _controller: OkeanosCoreBundle:Default:signup
+
+okeanos_core_profile:
+    path:    /profile
+    defaults:
+        _controller: OkeanosCoreBundle:Default:profile
+
 okeanos_core_users:
     path:    /admin/users
     defaults:
