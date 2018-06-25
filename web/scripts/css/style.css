@@ -3,70 +3,40 @@
     src: url('../../medias/fonts/caviar_dreams/CaviarDreams.ttf') format('OpenType');
 }
 
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html, body{
-    height: 100%;
-    width: 100%;
-}
-
-body{
-    font-family: sans-serif;
-}
-
-.wrapper-main{
-    min-height: 100vh;
-    position: relative;
-}
-
 .navbar{
     font-family: 'CaviarDreams';
-    width: 100%;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    padding: 24px;
+    color: #FFFFFF;
 }
 
-.logo{
-    padding: 12px 24px;
+.navbar-brand img {
+    width: 200px;
 }
 
-.navbar-menu{
-    font-size: 0;
-    text-align: right;
-}
-
-.navbar-item{
-    display: inline-block;
-    margin-right: 24px;
-}
-
-.navbar-link{
-    font-size: 16px;
-    color: black;
-    text-decoration: none;
-    display: inline-block;
-    padding: 12px 24px;
+li.active{
+    background-color: #73C6BE;
     border-radius: 4px;
 }
 
-.navbar-link:hover{
-    color: white;
-    background-color: rgba(35, 220, 35, 1);
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.91)!important;
 }
 
-.navbar-link-active{
-    color: white;
-    background-color: rgba(35, 220, 35, 1);
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: rgba(255, 255, 255, 0.51) !important;
 }
 
-.footer{
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
+/* hide the blue outline */
+.form-control:focus {
+    outline: 0 !important;
+    border-color: initial;
+    box-shadow: none;
+}
+
+.btn {
+    border-color: initial;
+    background-color: #FFFFFF!important;
+}
+
+.btn:hover{
+    background-color: rgb(115, 198, 190) !important;
 }
