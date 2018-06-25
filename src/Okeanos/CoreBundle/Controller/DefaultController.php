@@ -5,6 +5,9 @@ namespace Okeanos\CoreBundle\Controller;
 use Okeanos\CoreBundle\Entity\News;
 use Okeanos\CoreBundle\Entity\Actions;
 use Okeanos\CoreBundle\Entity\Users;
+use Okeanos\CoreBundle\Form\NewsType;
+use Okeanos\CoreBundle\Form\ActionsType;
+use Okeanos\CoreBundle\Form\UsersType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -65,44 +68,27 @@ class DefaultController extends Controller
     }
 
     public function newsAddAction(Request $request){
-        // On récupère l'EntityManager
-        $em = $this->getDoctrine()->getManager();
-
-        // Création de l'entité Advert
         $news = new News();
-        $news->setTitle('News 4');
-        $news->setDescript("Description de l'article 4");
-        $news->setImg("#");
-        $news->setDate(new \Datetime());
-        
-        $user = new Users();
-        $repository = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('OkeanosCoreBundle:Users');
-        $user = $repository->find(1);
+        $form = $this->get('form.factory')->create(NewsType::class, $news);
 
-        $news->setUser($user);
+        if($request->isMethod('POST') && $form->handleRequest($request)->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($news);
+            $em->flush();
 
-        $em->persist($news);
-
-        // On déclenche l'enregistrement
-        $em->flush();
-
-        // La gestion d'un formulaire est particulière mais l'idée est la suivante :
-
-        // Si la requête est en POST, c'est que le visiteur a soumis le formulaire
-        if($request->isMethod('POST')){
-            // Ici, on s'occupera de la création et de la gestion du formulaire
             $request->getSession()->getFlashBag()->add('notice', 'News bien enregistrée');
 
-            // Puis on redirige vers la page de visualisation de cette annonce
-            return $this->redirectToRoute('okeanos_core_newsView', array('id' => $news->getId()));
+            return $this->redirectToRoute('okeanos_core_news', array(
+                'id' => $news->getId()
+            ));
         }
 
         $content = $this
             ->get('templating')
-            ->render('OkeanosCoreBundle:Default:newsAdd.html.twig');
+            ->render('OkeanosCoreBundle:Default:newsAdd.html.twig', array(
+                'form' => $form->createView(),
+            ));
         
         return new Response($content);
     }
@@ -147,36 +133,54 @@ class DefaultController extends Controller
     }
 
     public function actionsAddAction(Request $request){
-        // On récupère l'EntityManager
-        $em = $this->getDoctrine()->getManager();
-
-        // Création de l'entité Advert
+        // On crée un objet Actions
         $action = new Actions();
-        $action->setName('Ocean cleanup');
-        $action->setDescript("Ocean Cleanup is a huge project created by Boyan Slat. The Ocean Cleanup develops advanced technologies to rid the world's oceans of plastic. A full-scale deployment of this systems is estimated to clean up 50% of the Great Pacific Garbage Patch in 5 years and this system could also be used in the Atlantic coast in Britanny.");
-        $action->setImg("#");
-        $action->setGoal(5000000);
-        $action->setStatus(false);
+        
+        // On crée le FormBuilder grâce au service form factory
+        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $action);
 
-        $em->persist($action);
+        // On ajoute les champs de l'entité que l'on veut à notre formulaire
+        $formBuilder
+            ->add('name', TextType::class)
+            ->add('descript', TextareaType::class)
+            ->add('img', TextareaType::class)
+            ->add('goal', TextType::class)
+            ->add('status', TextType::class)
+            ->add('save', SubmitType::class)
+        ;
+        
+        // A partir du formBuilder, on génère le formulaire
+        $form = $formBuilder->getForm();
 
-        // On déclenche l'enregistrement
-        $em->flush();
+        // Si la requête est en POST
+        if($request->isMethod('POST'))
+        {
+            // On fait le lien Requête <-> Formulaire
+            // A partir de maintenant, la variable $user contient les valeurs entrées dans le formulaire par le visiteur
+            $form->handleRequest($request);
 
-        // La gestion d'un formulaire est particulière mais l'idée est la suivante :
+            // On vérifie que les valeurs entrées sont correctes
+            if($form->isValid())
+            {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($action);
+                $em->flush();
 
-        // Si la requête est en POST, c'est que le visiteur a soumis le formulaire
-        if($request->isMethod('POST')){
-            // Ici, on s'occupera de la création et de la gestion du formulaire
-            $request->getSession()->getFlashBag()->add('notice', 'Action bien enregistrée');
+                $request->getSession()->getFlashBag()->add('notice', 'Action bien enregistrée');
 
-            // Puis on redirige vers la page de visualisation de cette annonce
-            return $this->redirectToRoute('okeanos_core_actionsView', array('id' => $action->getId()));
+                // On redirige vers la page du profil utilisateur
+                return $this->redirectToRoute('okeanos_core_actions', array(
+                    'id' => $action->getId()
+                ));
+            }
         }
 
+        // On passe la méthode createView() du formulaire à la vue afin qu'elle puisse afficher le formulaire toute seule
         $content = $this
             ->get('templating')
-            ->render('OkeanosCoreBundle:Default:actionsAdd.html.twig');
+            ->render('OkeanosCoreBundle:Default:actionsAdd.html.twig', array(
+                'form' => $form->createView(),
+            ));
         
         return new Response($content);
     }
@@ -269,7 +273,7 @@ class DefaultController extends Controller
 
                 $request->getSession()->getFlashBag()->add('notice', 'Utilisateur bien enregistré');
 
-                // On redirige vers la page du profile utilisateur
+                // On redirige vers la page du profil utilisateur
                 return $this->redirectToRoute('okeanos_core_profile', array(
                     'id' => $user->getId()
                 ));

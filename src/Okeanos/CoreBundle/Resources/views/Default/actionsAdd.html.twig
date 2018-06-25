@@ -3,5 +3,75 @@
 {% block title %}Ajouter une action | Actions | {{ parent() }}{% endblock %}
 {% block activePageActions %} active{% endblock %}
 {% block container %}
-    <p>Coucou, tu viens d'ajouter une action</p>
+    {{ form_start(form) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.name, 'Name :') }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.name) }}
+
+        {# Génération de l'input. #}
+        {{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder': 'Enter an action\'s name'}}) }}
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.descript, 'Description :') }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.descript) }}
+
+        {# Génération de l'input. #}
+        {{ form_widget(form.descript, {'attr': {'class': 'form-control', 'placeholder': 'Enter a short description'}}) }}
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.img, 'Image :') }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.img) }}
+
+        {# Génération de l'input. #}
+        {{ form_widget(form.img, {'attr': {'class': 'form-control', 'placeholder': 'Enter an image\'s name'}}) }}
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.goal, 'Goal :') }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.goal) }}
+
+        {# Génération de l'input. #}
+        {{ form_widget(form.goal, {'attr': {'class': 'form-control', 'placeholder': 'Enter a goal\'s number'}}) }}
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.status, 'Status :') }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.status) }}
+
+        {# Génération de l'input. #}
+        {{ form_widget(form.status, {'attr': {'class': 'form-control', 'placeholder': 'Enter a status'}}) }}
+        <small id="passwordHelpBlock" class="form-text text-muted">
+            Enter "false" OR "true".
+        </small>
+    </div>
+
+    {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget. #}
+    {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+
+    {# Génération automatique des champs pas encore écrits. Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !) et tous les autres champs cachés (type "hidden"). #}
+    {{ form_rest(form) }}
+
+    {# Fermeture de la balise "form" du formulaire HTML. #}
+    {{ form_end(form) }}
 {% endblock %}

@@ -2,5 +2,77 @@
 {% extends 'OkeanosCoreBundle::layout.html.twig' %}
 {% block title %}Ajouter un user | Users | {{ parent() }}{% endblock %}
 {% block container %}
-    {{ form(form) }}
+    {{ form_start(form) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.login, 'Login :') }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.login) }}
+
+        {# Génération de l'input. #}
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <div class="input-group-text">@</div>
+            </div>
+            {{ form_widget(form.login, {'attr': {'class': 'form-control', 'placeholder': 'Enter a login'}}) }}
+        </div>
+        <small id="passwordHelpBlock" class="form-text text-muted">
+            The login must be under 25 caracters.
+        </small>
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.pwd, 'Password :') }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.pwd) }}
+
+        {# Génération de l'input. #}
+        {{ form_widget(form.pwd, {'attr': {'class': 'form-control', 'placeholder': 'Enter a password'}}) }}
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.mail, 'Mail :') }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.mail) }}
+
+        {# Génération de l'input. #}
+        {{ form_widget(form.mail, {'attr': {'class': 'form-control', 'placeholder': 'Enter a mail'}}) }}
+
+        <small id="passwordHelpBlock" class="form-text text-muted">
+            email@example.com
+        </small>
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.permission, 'Permission (visitor - admin) :') }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.permission) }}
+
+        {# Génération de l'input. #}
+        {{ form_widget(form.permission, {'attr': {'class': 'form-control', 'placeholder': 'Enter a permission'}}) }}
+
+        <small id="passwordHelpBlock" class="form-text text-muted">
+            You have 2 choices : visitor OR admin.
+        </small>
+    </div>
+
+    {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget. #}
+    {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+
+    {# Génération automatique des champs pas encore écrits. Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !) et tous les autres champs cachés (type "hidden"). #}
+    {{ form_rest(form) }}
+
+    {# Fermeture de la balise "form" du formulaire HTML. #}
+    {{ form_end(form) }}
 {% endblock %}
