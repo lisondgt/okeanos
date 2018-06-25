@@ -26,16 +26,16 @@
                 <li class="nav-item{% block activePageNews %}{% endblock %}"><a href="{{ path('okeanos_core_news') }}" class="nav-link">News</a></li>
                 <li class="nav-item{% block activePageActions %}{% endblock %}"><a href="{{ path('okeanos_core_actions') }}" class="nav-link">Actions</a></li>
                 <li class="nav-item{% block activePageDonate %}{% endblock %}"><a href="{{ path('okeanos_core_donate') }}" class="nav-link">Found</a></li>
-                <li class="nav-item{% block activePageLogin %}{% endblock %}" style="margin-right: .5rem;"><a href="{{ path('okeanos_core_login') }}" class="nav-link">Login</a></li>
             </ul>
             <div class="input-group col-md-3">
-                <input class="form-control py-2 border-right-0 border" type="search" value="Search">
+                <input class="form-control py-2 border-right-0 border" type="search" placeholder="Search" id="example-search-input">
                 <span class="input-group-append">
                 <button class="btn btn-outline-secondary border-left-0 border" type="button">
                     <i class="fa fa-search"></i>
                 </button>
               </span>
             </div>
+            <a href="{{ path('okeanos_core_login') }}" class="nav-link"><i class="fas fa-user"></i></a>
         </div>
     </nav>
     <div class="wrapper-main">

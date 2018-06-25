@@ -32,13 +32,17 @@ li.active{
     box-shadow: none;
 }
 
-.btn {
+.navbar .btn {
     border-color: initial;
     background-color: #FFFFFF!important;
 }
 
-.btn:hover {
+.navbar .btn:hover{
     background-color: rgb(115, 198, 190) !important;
+}
+
+.navbar .fas{
+    color: white;
 }
 
 h1{
