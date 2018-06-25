@@ -37,10 +37,10 @@ li.active{
     background-color: #FFFFFF!important;
 }
 
-<<<<<<< HEAD
-.btn:hover{
+.btn:hover {
     background-color: rgb(115, 198, 190) !important;
-=======
+}
+
 h1{
     text-align: center;
     padding-bottom: 20px;
@@ -51,5 +51,4 @@ h1{
     right: 0;
     bottom: 0;
     left: 0;
->>>>>>> b97661d6f196ad701087908df2cf595d79029acd
 }
