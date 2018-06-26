@@ -20,6 +20,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class DefaultController extends Controller
 {
@@ -144,8 +146,13 @@ class DefaultController extends Controller
             ->add('name', TextType::class)
             ->add('descript', TextareaType::class)
             ->add('img', TextareaType::class)
-            ->add('goal', TextType::class)
-            ->add('status', TextType::class)
+            ->add('goal', IntegerType::class)
+            ->add('status', ChoiceType::class, array(
+                'choices' => array(
+                    'Unreached' => false,
+                    'Reached' => true
+                )
+            ))
             ->add('save', SubmitType::class)
         ;
         
@@ -250,7 +257,12 @@ class DefaultController extends Controller
             ->add('login', TextType::class)
             ->add('pwd', PasswordType::class)
             ->add('mail', EmailType::class)
-            ->add('permission', TextType::class)
+            ->add('permission', ChoiceType::class, array(
+                'choices' => array(
+                    'Visitor' => 'visitor',
+                    'Administrator' => 'admin'
+                )
+            ))
             ->add('save', SubmitType::class)
         ;
         

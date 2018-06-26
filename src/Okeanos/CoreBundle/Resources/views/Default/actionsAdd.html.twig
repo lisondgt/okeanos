@@ -60,10 +60,7 @@
         {{ form_errors(form.status) }}
 
         {# Génération de l'input. #}
-        {{ form_widget(form.status, {'attr': {'class': 'form-control', 'placeholder': 'Enter a status'}}) }}
-        <small id="passwordHelpBlock" class="form-text text-muted">
-            Enter "false" OR "true".
-        </small>
+        {{ form_widget(form.status, {'attr': {'class': 'form-control'}}) }}
     </div>
 
     {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget. #}

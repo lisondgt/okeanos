@@ -54,17 +54,13 @@
 
     <div class="form-group">
         {# Génération du label. #}
-        {{ form_label(form.permission, 'Permission (visitor - admin) :') }}
+        {{ form_label(form.permission, 'Rank :') }}
 
         {# Affichage des erreurs pour ce champ précis. #}
         {{ form_errors(form.permission) }}
 
         {# Génération de l'input. #}
-        {{ form_widget(form.permission, {'attr': {'class': 'form-control', 'placeholder': 'Enter a permission'}}) }}
-
-        <small id="passwordHelpBlock" class="form-text text-muted">
-            You have 2 choices : visitor OR admin.
-        </small>
+        {{ form_widget(form.permission, {'attr': {'class': 'form-control'}}) }}
     </div>
 
     {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget. #}

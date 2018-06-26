@@ -3,6 +3,7 @@
 namespace Okeanos\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * News
@@ -31,6 +32,7 @@ class News
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\Length(max=255, maxMessage="The title can't have more {{ limit }} characters.")
      */
     private $title;
 
@@ -52,6 +54,7 @@ class News
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
+     * @Assert\DateTime()
      */
     private $date;
 
