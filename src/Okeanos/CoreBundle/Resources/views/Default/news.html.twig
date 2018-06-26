@@ -2,7 +2,20 @@
 {% extends 'OkeanosCoreBundle::layout.html.twig' %}
 {% block title %}News | {{ parent() }}{% endblock %}
 {% block activePageNews %} active{% endblock %}
+    {% block css %}
+        <link rel="stylesheet" href="{{ asset('scripts/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('scripts/css/bootstrap/bootstrap-grid.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('scripts/css/bootstrap/bootstrap-reboot.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('scripts/css/bootstrap/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    {% endblock %}
 {% block container %}
+    <div class="news hero-section">
+        <div class="hero-section-text">
+            <h1>THE NEWS OF</h1>
+            <h1>THE <span class="green">PROJECT</span></h1>
+        </div>
+    </div>
     {% for new in news %}
         <p>
             Titre : {{ new.title }}
