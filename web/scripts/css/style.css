@@ -78,7 +78,15 @@ h1{
 }
 
 .news button.btn.btn-primary{
-    background-color: rgb(115, 198, 190) !important;
+     background-color: rgb(115, 198, 190) !important;
+     border: none;
+     color: white!important;
+ }
+
+.news button.btn.btn-primary:hover{
+    background-color: rgb(94, 176, 168) !important;
+    width: 105px;
+    box-shadow: 1px 1px 1px rgba(10, 10, 10, 0.55);
     border: none;
     color: white!important;
 }
