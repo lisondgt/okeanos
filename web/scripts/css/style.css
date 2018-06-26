@@ -68,6 +68,25 @@ h1{
     padding-bottom: 20px;
 }
 
+/* -------- NEWS -------- */
+.news {
+    padding-top: 20px;
+}
+
+.news p.day {
+    font-size: 50px;
+}
+
+.news button.btn.btn-primary{
+    background-color: rgb(115, 198, 190) !important;
+    border: none;
+    color: white!important;
+}
+
+.news a{
+    color: white!important;
+}
+
 
 
 /* -------- HEADER -------- */
@@ -122,10 +141,16 @@ h1{
     text-shadow: 1px 1px 2px #0a0a0a;
 }
 
-.actions.hero-section .hero-section-text h1 .actions.hero-section .hero-section-text h2 {
+.actions.hero-section .hero-section-text h1 {
     font-size: 5em !important;
     font-weight: bold!important;
 }
+
+.actions.hero-section .hero-section-text h2 {
+    font-size: 2em !important;
+    font-weight: bold!important;
+}
+
 
 /* -------- FOOTER -------- */
 
