@@ -95,7 +95,23 @@ h1{
     color: white!important;
 }
 
+/* -------- ACTIONS -------- */
+.actions button.btn.btn-primary{
+    background-color: rgb(115, 198, 190) !important;
+    border: none;
+    color: white!important;
+}
 
+.actions button.btn.btn-primary:hover{
+    background-color: rgb(94, 176, 168) !important;
+    box-shadow: 1px 1px 1px rgba(10, 10, 10, 0.55);
+    border: none;
+    color: white!important;
+}
+
+.actions a{
+    color: white!important;
+}
 
 /* -------- HEADER -------- */
 .news.hero-section {
