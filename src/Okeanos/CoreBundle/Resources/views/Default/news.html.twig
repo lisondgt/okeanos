@@ -2,13 +2,6 @@
 {% extends 'OkeanosCoreBundle::layout.html.twig' %}
 {% block title %}News | {{ parent() }}{% endblock %}
 {% block activePageNews %} active{% endblock %}
-{% block css %}
-    <link rel="stylesheet" href="{{ asset('scripts/css/bootstrap/bootstrap-grid.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('scripts/css/bootstrap/bootstrap-reboot.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('scripts/css/bootstrap/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('scripts/css/style.css') }}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-{% endblock %}
 {% block container %}
     <div class="news hero-section">
         <div class="hero-section-text">
@@ -18,7 +11,7 @@
     </div>
     <div class="news">
     {% for new in news %}
-        <img src=""> img
+        <img src="{{ asset('medias/img/news/' ~ new.img) }}">
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-sm-2 date" style="text-align: center; border-right: 1px solid;">
@@ -29,10 +22,10 @@
                         {{ new.date|date('F Y') }}
                     </p>
                 </div>
-                <div class="col-sm-4">
-                    <p>
-                        {{ new.title }}
-                    </p>
+                <div class="col-sm-8">
+                    <h1>
+                        &#171; {{ new.title }} &#187;
+                    </h1>
                     <p>
                         {{ new.descript }}
                     </p>
@@ -43,7 +36,6 @@
                 </div>
             </div>
         </div>
-        <hr>
     {% endfor %}
     </div>
 {% endblock %}

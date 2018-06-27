@@ -2,13 +2,6 @@
 {% extends 'OkeanosCoreBundle::layout.html.twig' %}
 {% block title %}Actions | {{ parent() }}{% endblock %}
 {% block activePageActions %} active{% endblock %}
-{% block css %}
-    <link rel="stylesheet" href="{{ asset('scripts/css/bootstrap/bootstrap-grid.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('scripts/css/bootstrap/bootstrap-reboot.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('scripts/css/bootstrap/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('scripts/css/style.css') }}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-{% endblock %}
 {% block container %}
 
 
@@ -20,12 +13,13 @@
     </div>
 
 
-    <div class="actions art">
+
     {% for action in actions %}
+        <div class="actions art">
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-sm-4">
-                    <img class=""> img
+                    <img src="{{ asset('medias/img/actions/' ~ action.img) }}">
                 </div>
                 <div class="col-sm-8">
                     <h1 style="text-align: left">
@@ -40,22 +34,11 @@
                     <div class="progress">
                         <div class="progress-bar" style="width:70%">70%</div>
                     </div>
-                </div>
-            </div>
-            <div class="row justify-content-end">
-                <div class="col-4">
-                    <p>
-                        <button type="button" class="btn btn-primary"><a href="{{ path('okeanos_core_actionsView', { 'id': action.id }) }}">Read more</a></button>
-                    </p>
-                </div>
-                <div class="col-4">
-                    <p>
-                        <button type="button" class="btn btn-primary"><a href="{{ path('okeanos_core_donate', { 'id': action.id }) }}">Fund this action</a></button>
-                    </p>
+                    <button type="button" class="btn btn-primary"><a href="{{ path('okeanos_core_actionsView', { 'id': action.id }) }}">Read more</a></button>
+                    <button type="button" class="btn btn-primary"><a href="{{ path('okeanos_core_donate', { 'id': action.id }) }}">Fund this action</a></button>
                 </div>
             </div>
         </div>
-        <hr>
+        </div>
     {% endfor %}
-    </div>
 {% endblock %}
