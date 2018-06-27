@@ -23,6 +23,7 @@ p {
     width: 100%;
 }
 
+/* -------- NAVBAR -------- */
 .navbar{
     font-family: 'CaviarDreams';
     color: #FFFFFF;
@@ -76,7 +77,14 @@ li.active{
     color: rgb(115, 198, 190) !important;
 }
 
-h1{
+/* -------- BODY HOME -------*/
+
+.index-header-img{
+    width: 100vw;
+    z-index: -100;
+}
+
+.index-h1{
     text-align: center;
     padding-bottom: 20px;
 }
@@ -232,6 +240,44 @@ h1{
 }
 
 
+.index-h2{
+    text-align: center;
+    padding-bottom: 20px;
+    padding-left: 43%;
+    padding-top: 50px;
+}
+
+.index-h3{
+    text-align: center;
+    padding-bottom: 90px;
+}
+
+.index-seabin{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.index-button-home{
+    background-color: #444259;
+    width: 200px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+#iframe{
+    width:100%;
+}
+
+.align-partners{
+    display: flex;
+    
+}
 /* -------- FOOTER -------- */
 
 footer {
@@ -246,6 +292,7 @@ p.backHome {
 
 footer .section-title {
     text-align: center;
+    color: #007b5e;
     margin-bottom: 50px;
     text-transform: uppercase;
 }

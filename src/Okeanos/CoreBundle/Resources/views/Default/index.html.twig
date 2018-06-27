@@ -1,17 +1,30 @@
 {# src/Okeanos/CoreBundle/Resources/views/Default/index.html.twig #}
 {% extends 'OkeanosCoreBundle::layout.html.twig' %}
 {% block activePageHome %} active{% endblock %}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('scripts/css/bootstrap/bootstrap-grid.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('scripts/css/bootstrap/bootstrap-reboot.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('scripts/css/bootstrap/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('scripts/css/style.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+{% endblock %}
+>>>>>>> 40ce499592395f1e8db84e26f7ff6316c170ca26
+>>>>>>> 0218658c9a3f1ae2e87760ccb1e2c2fef85bf161
 {% block container %}
     <header>
         <div>
-            <img class="header-img" src="{{ asset('medias/img/header.png') }}"/>
+            <img class="index-header-img" src="{{ asset('medias/img/header.png') }}"/>
         </div>
     </header>
     <div class="main-container">
         <section class="container">
             <div class="row">
-                <h1 class="text-justify">Welcome to Project Okeanos</h1>
-                <h3 class="text-justify"> We are committed to protect and enhance our environment</h3>
+                <h1 class="text-justify index-h1">Welcome to Project Okeanos</h1>
+                <h3 class="text-justify index-h3"> We are committed to protect and enhance our environment</h3>
                 <p class="text-justify"><strong>Project Okeanos</strong> was created by the Britanny Sea life association in order to save the ocean and the Britanny coastline. 
                 We will lead several actions with different purposes like waste collection on the beaches or deploying devices to clean ports and the oceans. 
                 Nowadays, cleaning the oceans is not just to gain a bit of comfort or to make our beaches more attractive for tourist. 
@@ -22,15 +35,15 @@
                 Britanny Sea life is a non-profitable association, that’s why we need <span class="font-weight-bold">YOUR</span> help to reach our objectives. 
                 We are currently leading 3 actions, but if our first campaign is successful, we will create new actions to widen our area of activity.
                 </p> 
-                <p class="seabin">
+                <p class="index-seabin">
                     <img src="{{ asset('medias/img/seabin_draw.png') }}"/>
                 </p>
-                <p class="seabin">
-                    <a href="{{ path('okeanos_core_actions') }}" class="btn button-home text-white">Our Actions</a>
+                <p class="index-seabin">
+                    <a href="{{ path('okeanos_core_actions') }}" class="btn index-button-home text-white">Our Actions</a>
                 </p>
             
                     <iframe id="iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2628.3101395063895!2d4.07806889925875!3d48.26861492875386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ee990d0530cd7d%3A0xdecabd3109be2c43!2sI.U.T.+de+Troyes!5e0!3m2!1sfr!2sfr!4v1530021579841" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-                <h2>PARTNERS</h2>
+                <h2 class="index-h2">PARTNERS</h2>
                                     
             </div>
             <div class="row">
