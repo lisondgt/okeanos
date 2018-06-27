@@ -2,7 +2,6 @@
     font-family: 'CaviarDreams';
     src: url('../../medias/fonts/caviar_dreams/CaviarDreams.ttf') format('OpenType');
 }
-
 /* -------- NAVBAR -------- */
 .navbar{
     font-family: 'CaviarDreams';
@@ -56,12 +55,58 @@ li.active{
 .navbar a:hover {
     color: rgb(115, 198, 190) !important;
 }
+/* -------- BODY HOME -------*/
+
+.header-img{
+    width: 100vw;
+    z-index: -100;
+}
 
 h1{
     text-align: center;
     padding-bottom: 20px;
+    padding-left: 30%;
+    padding-top: 50px;
 }
 
+h2{
+    text-align: center;
+    padding-bottom: 20px;
+    padding-left: 43%;
+    padding-top: 50px;
+}
+
+h3{
+    text-align: center;
+    padding-bottom: 90px;
+    padding-left: 20%;
+}
+
+.seabin{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.button-home{
+    background-color: #444259;
+    width: 200px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+#iframe{
+    width:100%;
+}
+
+.align-partners{
+    display: flex;
+}
 /* -------- FOOTER -------- */
 
 footer {

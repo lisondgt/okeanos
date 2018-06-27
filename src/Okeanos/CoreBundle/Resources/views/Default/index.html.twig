@@ -8,21 +8,51 @@
         <link rel="stylesheet" href="{{ asset('scripts/css/style.css') }}">
 {% endblock %}
 {% block container %}
+    <header>
+        <div>
+            <img class="header-img" src="{{ asset('medias/img/header.png') }}"/>
+        </div>
+    </header>
     <div class="main-container">
         <section class="container">
             <div class="row">
-            <h1 class="text-justify">Welcome to Project Okeanos</h1>
-            <h3 class="text-justify"> We are committed to protect and enhance our environment</h3>
-            <p class="text-justify">Project Okeanos was created by the Britanny Sea life association in order to save the ocean and the Britanny coastline. 
-            We will lead several actions with different purposes like waste collection on the beaches or deploying devices to clean ports and the oceans. 
-            Nowadays, cleaning the oceans is not just to gain a bit of comfort or to make our beaches more attractive for tourist. 
-            It’s a matter of life for our planet, and it’s URGENT. Hundreds of species are dying from our plastic wastes in the ocean. 
-            “Over 5 trillion pieces of plastic currently litter the ocean” – Ocean Cleanup
-            Britanny Sea life is a non-profitable association, that’s why we need YOUR help to reach our objectives. 
-            We are currently leading 3 actions, but if our first campaign is successful, we will create new actions to widen our area of activity.
-            </p> 
-
-            </row>
+                <h1 class="text-justify">Welcome to Project Okeanos</h1>
+                <h3 class="text-justify"> We are committed to protect and enhance our environment</h3>
+                <p class="text-justify"><strong>Project Okeanos</strong> was created by the Britanny Sea life association in order to save the ocean and the Britanny coastline. 
+                We will lead several actions with different purposes like waste collection on the beaches or deploying devices to clean ports and the oceans. 
+                Nowadays, cleaning the oceans is not just to gain a bit of comfort or to make our beaches more attractive for tourist. 
+                It’s a matter of life for our planet, and it’s <span class="font-weight-bold">URGENT</span>. 
+                </p>
+                <p>Hundreds of species are dying from our plastic wastes in the ocean. 
+                “Over 5 trillion pieces of plastic currently litter the ocean” – <em>Ocean Cleanup.</em>
+                Britanny Sea life is a non-profitable association, that’s why we need <span class="font-weight-bold">YOUR</span> help to reach our objectives. 
+                We are currently leading 3 actions, but if our first campaign is successful, we will create new actions to widen our area of activity.
+                </p> 
+                <p class="seabin">
+                    <img src="{{ asset('medias/img/seabin_draw.png') }}"/>
+                </p>
+                <p class="seabin">
+                    <a href="{{ path('okeanos_core_actions') }}" class="btn button-home text-white">Our Actions</a>
+                </p>
+            
+                    <iframe id="iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2628.3101395063895!2d4.07806889925875!3d48.26861492875386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ee990d0530cd7d%3A0xdecabd3109be2c43!2sI.U.T.+de+Troyes!5e0!3m2!1sfr!2sfr!4v1530021579841" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <h2>PARTNERS</h2>
+                                    
+            </div>
+            <div class="row">
+                <div class="col-3 ">
+                    <img class="text-center" src="{{ asset('medias/img/logo_palm.png') }}"/>
+                </div>
+                <div class="col-3 container-fluid">
+                    <img class="text-center"  src="{{ asset('medias/img/bretagne.png') }}"/>
+                </div>
+                <div class="col-3">
+                    <img  src="{{ asset('medias/img/iut.png') }}"/>
+                </div>
+                <div class="col-3 align-items-lg-center">
+                    <img class="align-middle" src="{{ asset('medias/img/seabin.png') }}"/>
+                </div>
+            </div>
         </section>
     </div>
 {% endblock %}
