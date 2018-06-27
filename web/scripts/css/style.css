@@ -3,11 +3,21 @@
     src: url('../../medias/fonts/caviar_dreams/CaviarDreams.ttf') format('OpenType');
 }
 
+@font-face{
+    font-family: 'GeosansLight';
+    src: url('../../medias/fonts/caviar_dreams/GeosansLight.ttf') format('OpenType');
+}
+
 h1 {
+    font-weight: bold;
     font-family: CaviarDreams;
 }
 
 h2 {
+    font-family: CaviarDreams;
+}
+
+h3 {
     font-family: CaviarDreams;
 }
 
@@ -85,8 +95,9 @@ li.active{
 }
 
 .index-h1{
-    text-align: center;
+    margin: auto;
     padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 /* -------- NEWS -------- */
@@ -271,6 +282,17 @@ li.active{
     margin: auto;
 }
 
+.index-button-home:hover{
+    background-color: #444259;
+    width: 200px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    box-shadow: 1px 1px 1px rgba(10, 10, 10, 0.55);
+}
+
 #iframe{
     width:100%;
 }
@@ -282,7 +304,7 @@ li.active{
 /* -------- FOOTER -------- */
 
 footer {
-    padding: 60px 0;
+    padding: 40px 0;
     font-family: 'CaviarDreams';
 }
 
@@ -365,6 +387,7 @@ footer .section-title {
 
 .footer img {
     width: 100px;
+    padding-bottom: 10px;
 }
 
 select#inlineFormCustomSelect.custom-select.mr-sm-2{

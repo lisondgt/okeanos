@@ -26,10 +26,10 @@
                         {{ action.name }}
                     </h1>
                     <p>
-                        Description : {{ action.descript }}
+                        {{ action.descript }}
                     </p>
                     <p>
-                        Action's goal : {{ action.goal|number_format(2, ',', ' ') }}€
+                        {{ action.goal|number_format(2, ',', ' ') }}€
                     </p>
                     <div class="progress">
                         <div class="progress-bar" style="width:70%">70%</div>
