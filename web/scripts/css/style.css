@@ -3,6 +3,12 @@
     src: url('../../medias/fonts/caviar_dreams/CaviarDreams.ttf') format('OpenType');
 }
 /* -------- NAVBAR -------- */
+.bg-dark {
+    background-color: rgba(63, 75, 89, 0.92) !important;
+    position: fixed;
+    width: 100%;
+}
+
 .navbar{
     font-family: 'CaviarDreams';
     color: #FFFFFF;
@@ -82,6 +88,7 @@ h3{
     padding-left: 20%;
 }
 
+<<<<<<< HEAD
 .seabin{
     display: inline-block;
     width: 100%;
@@ -107,6 +114,116 @@ h3{
 .align-partners{
     display: flex;
 }
+=======
+/* -------- NEWS -------- */
+.news {
+    padding-top: 20px;
+}
+
+.news p.day {
+    font-size: 50px;
+}
+
+.news button.btn.btn-primary{
+     background-color: rgb(115, 198, 190) !important;
+     border: none;
+     color: white!important;
+ }
+
+.news button.btn.btn-primary:hover{
+    background-color: rgb(94, 176, 168) !important;
+    width: 105px;
+    box-shadow: 1px 1px 1px rgba(10, 10, 10, 0.55);
+    border: none;
+    color: white!important;
+}
+
+.news a{
+    color: white!important;
+}
+
+/* -------- ACTIONS -------- */
+.actions button.btn.btn-primary{
+    background-color: rgb(115, 198, 190) !important;
+    border: none;
+    color: white!important;
+}
+
+.actions button.btn.btn-primary:hover{
+    background-color: rgb(94, 176, 168) !important;
+    box-shadow: 1px 1px 1px rgba(10, 10, 10, 0.55);
+    border: none;
+    color: white!important;
+}
+
+.actions a{
+    color: white!important;
+}
+
+/* -------- HEADER -------- */
+.news.hero-section {
+    background: url("../../medias/img/news.png") 50% no-repeat;
+    background-size: cover;
+    height: 80vh;
+    text-align: center;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.news.hero-section .hero-section-text h1 {
+    font-size: 5em !important;
+    font-weight: bold;
+}
+
+.news.hero-section .hero-section-text {
+    font-family: CaviarDreams;
+    color: #fefefe;
+    text-shadow: 1px 1px 2px #0a0a0a;
+}
+.news.hero-section .hero-section-text span.green{
+    color: #73C6BE;
+}
+.actions.hero-section {
+    background: url("../../medias/img/actions.png") 50% no-repeat;
+    background-size: cover;
+    height: 80vh;
+    text-align: center;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.actions.hero-section .hero-section-text {
+    font-family: CaviarDreams;
+    color: #fefefe;
+    text-shadow: 1px 1px 2px #0a0a0a;
+}
+
+.actions.hero-section .hero-section-text h1 {
+    font-size: 5em !important;
+    font-weight: bold!important;
+}
+
+.actions.hero-section .hero-section-text h2 {
+    font-size: 2em !important;
+    font-weight: bold!important;
+}
+
+
+>>>>>>> 282b026478c48c82805f5ab379ada0a0c3b9c1df
 /* -------- FOOTER -------- */
 
 footer {
@@ -121,7 +238,6 @@ p.backHome {
 
 footer .section-title {
     text-align: center;
-    color: #007b5e;
     margin-bottom: 50px;
     text-transform: uppercase;
 }
