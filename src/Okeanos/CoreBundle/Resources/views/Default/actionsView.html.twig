@@ -3,16 +3,37 @@
 {% block title %}{{ action.name }} | Actions | {{ parent() }}{% endblock %}
 {% block activePageActions %} active{% endblock %}
 {% block container %}
-    <p>
-        Title : {{ action.name }}
-    </p>
-    <p>
-        Description : {{ action.descript }}
-    </p>
-    <p>
-        Goal : {{ action.goal|number_format(2, ',', ' ') }}€
-    </p>
-    <p>
-        Fund this action : <a href="{{ path('okeanos_core_donate', { 'id': action.id }) }}">Donate</a>
-    </p>
+    <div class="mt-3">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-sm-4">
+                        <img src="{{ asset('medias/img/actions/' ~ action.img) }}">
+                    </div>
+                    <div class="col-sm-8">
+                        <h1 style="text-align: left">
+                            {{ action.name }}
+                        </h1>
+                        <p>
+                            {{ action.descript }}
+                        </p>
+                        <p>
+                            Goal : {{ action.goal|number_format(2, ',', ' ') }}€
+                        </p>
+                        <p>
+                            {{ action.content }}
+                        </p>
+                        <p>
+                            {{ action.content }}
+                        </p>
+                        <p>
+                            {{ action.content }}
+                        </p>
+                        <!--<div class="progress">
+                            <div class="progress-bar" style="width:70%">70%</div>
+                        </div>-->
+                        <a href="{{ path('okeanos_core_donate', { 'id': action.id }) }}" class="btn btn-primary">Fund this action</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 {% endblock %}

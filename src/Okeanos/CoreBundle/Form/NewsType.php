@@ -25,7 +25,7 @@ class NewsType extends AbstractType
             ->add('img', TextareaType::class)
             ->add('user', EntityType::class, array(
                 'class' => 'OkeanosCoreBundle:Users',
-                'choice_label' => 'id',
+                'choice_label' => 'username',
                 'multiple' => false,
             ))
             ->add('save', SubmitType::class);

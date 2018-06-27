@@ -27,15 +27,14 @@
                         &#171; {{ new.title }} &#187;
                     </h1>
                     <p>
-                        Par : {{ new.user.fname ~ ' ' ~ new.user.lname }}
+                        Author : {{ new.user.fname ~ ' ' ~ new.user.lname }}
                     </p>
                     <p>
                         {{ new.descript }}
                     </p>
                     <p>
-                        <button type="button" class="btn btn-primary"><a href="{{ path('okeanos_core_newsView', { 'year': new.date|date('Y'), 'month': new.date|date('m'), 'day': new.date|date('d'), 'id': new.id }) }}">Read more</a></button>
+                        <a href="{{ path('okeanos_core_newsView', { 'year': new.date|date('Y'), 'month': new.date|date('m'), 'day': new.date|date('d'), 'id': new.id }) }}" class="btn btn-primary">Read more</a>
                     </p>
-
                 </div>
             </div>
         </div>

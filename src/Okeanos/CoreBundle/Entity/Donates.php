@@ -47,6 +47,11 @@ class Donates
      */
     private $date;
 
+    public function __construct()
+    {
+        $this->date = new \DateTime;
+    }
+
 
     /**
      * Get id
@@ -105,5 +110,52 @@ class Donates
     {
         return $this->date;
     }
-}
 
+    /**
+     * Set user.
+     *
+     * @param \Okeanos\CoreBundle\Entity\Users $user
+     *
+     * @return Donates
+     */
+    public function setUser(\Okeanos\CoreBundle\Entity\Users $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user.
+     *
+     * @return \Okeanos\CoreBundle\Entity\Users
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set action.
+     *
+     * @param \Okeanos\CoreBundle\Entity\Actions $action
+     *
+     * @return Donates
+     */
+    public function setAction(\Okeanos\CoreBundle\Entity\Actions $action)
+    {
+        $this->action = $action;
+
+        return $this;
+    }
+
+    /**
+     * Get action.
+     *
+     * @return \Okeanos\CoreBundle\Entity\Actions
+     */
+    public function getAction()
+    {
+        return $this->action;
+    }
+}

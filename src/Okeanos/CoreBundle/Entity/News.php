@@ -63,6 +63,13 @@ class News
         $this->date = new \DateTime;
     }
 
+    /**
+     * @var string
+     * 
+     * @ORM\Column(name="content", type="text", nullable=true)
+     */
+    private $content;
+
 
     /**
      * Get id
@@ -192,5 +199,29 @@ class News
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set content.
+     *
+     * @param string $content
+     *
+     * @return News
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content.
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
     }
 }

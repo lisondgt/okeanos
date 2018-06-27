@@ -5,9 +5,12 @@ namespace Okeanos\CoreBundle\Controller;
 use Okeanos\CoreBundle\Entity\News;
 use Okeanos\CoreBundle\Entity\Actions;
 use Okeanos\CoreBundle\Entity\Users;
+use Okeanos\CoreBundle\Entity\Donates;
 use Okeanos\CoreBundle\Form\NewsType;
 use Okeanos\CoreBundle\Form\ActionsType;
 use Okeanos\CoreBundle\Form\UsersType;
+use Okeanos\CoreBundle\Form\DonatesType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,6 +18,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -193,13 +197,63 @@ class DefaultController extends Controller
         return new Response($content);
     }
 
-    public function donateAction($id)
+    public function donateAction(Request $request, $id)
     {
-        $content = $this
-            ->get('templating')
-            ->render('OkeanosCoreBundle:Default:donate.html.twig');
+        if($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED'))
+        {
+            $donate = new Donates();
+            $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $donate);
 
-        return new Response($content);
+            $formBuilder
+                ->add('action', EntityType::class, array(
+                    'class' => 'OkeanosCoreBundle:Actions',
+                    'choice_label' => 'name',
+                    'multiple' => false,
+                ))
+                ->add('user', EntityType::class, array(
+                    'class' => 'OkeanosCoreBundle:Users',
+                    'choice_label' => 'id',
+                    'multiple' => false,
+                ))
+                ->add('amount', IntegerType::class)
+                ->add('save', SubmitType::class);
+
+            $form = $formBuilder->getForm();
+
+            if($request->isMethod('POST'))
+            {
+                $form->handleRequest($request);
+
+                if($form->isValid())
+                {
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($donate);
+                    $em->flush();
+        
+                    $request->getSession()->getFlashBag()->add('notice', 'Your donate has been registered');
+        
+                    return $this->redirectToRoute('okeanos_core_donate', array(
+                        'id' => $donate->getId()
+                    ));
+                }
+            }
+
+            $content = $this
+                ->get('templating')
+                ->render('OkeanosCoreBundle:Default:donate.html.twig', array(
+                    'form' => $form->createView(),
+                ));
+            
+            return new Response($content);
+        }
+
+        // Le service authentification_utils permet de récupérer le nom d'utilisateur et l'erreur dans le cas où le formulaire a déjà été soumis mais était invalide (mauvais mdp par exemple)
+        $authenticationUtils = $this->get('security.authentication_utils');
+
+        return $this->render('UserBundle:Security:login.html.twig', array(
+            'last_username' => $authenticationUtils->getLastUsername(),
+            'error' => $authenticationUtils->getLastAuthenticationError()
+        ));
     }
 
     public function signupAction()

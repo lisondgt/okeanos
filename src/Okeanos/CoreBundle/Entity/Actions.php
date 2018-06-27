@@ -56,6 +56,13 @@ class Actions
      */
     private $status;
 
+    /**
+     * @var string
+     * 
+     * @ORM\Column(name="content", type="text", nullable=true)
+     */
+    private $content;
+
 
     /**
      * Get id
@@ -186,5 +193,28 @@ class Actions
     {
         return $this->status;
     }
-}
 
+    /**
+     * Set content.
+     *
+     * @param string|null $content
+     *
+     * @return Actions
+     */
+    public function setContent($content = null)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content.
+     *
+     * @return string|null
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+}

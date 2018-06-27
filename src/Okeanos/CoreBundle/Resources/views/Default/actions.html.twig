@@ -3,42 +3,37 @@
 {% block title %}Actions | {{ parent() }}{% endblock %}
 {% block activePageActions %} active{% endblock %}
 {% block container %}
-
-
     <div class="actions hero-section">
         <div class="hero-section-text">
             <h1>OUR ACTIONS</h1>
             <h2>THE PLANET NEEDS YOU</h2>
         </div>
     </div>
-
-
-
     {% for action in actions %}
         <div class="actions art">
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-sm-4">
-                    <img src="{{ asset('medias/img/actions/' ~ action.img) }}">
-                </div>
-                <div class="col-sm-8">
-                    <h1 style="text-align: left">
-                        {{ action.name }}
-                    </h1>
-                    <p>
-                        {{ action.descript }}
-                    </p>
-                    <p>
-                        {{ action.goal|number_format(2, ',', ' ') }}€
-                    </p>
-                    <div class="progress">
-                        <div class="progress-bar" style="width:70%">70%</div>
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-sm-4">
+                        <img src="{{ asset('medias/img/actions/' ~ action.img) }}">
                     </div>
-                    <button type="button" class="btn btn-primary"><a href="{{ path('okeanos_core_actionsView', { 'id': action.id }) }}">Read more</a></button>
-                    <button type="button" class="btn btn-primary"><a href="{{ path('okeanos_core_donate', { 'id': action.id }) }}">Fund this action</a></button>
+                    <div class="col-sm-8">
+                        <h1 style="text-align: left">
+                            {{ action.name }}
+                        </h1>
+                        <p>
+                            {{ action.descript }}
+                        </p>
+                        <p>
+                            Goal : {{ action.goal|number_format(2, ',', ' ') }}€
+                        </p>
+                        <!--<div class="progress">
+                            <div class="progress-bar" style="width:70%">70%</div>
+                        </div>-->
+                        <a href="{{ path('okeanos_core_actionsView', { 'id': action.id }) }}" class="btn btn-primary">Read more</a>
+                        <a href="{{ path('okeanos_core_donate', { 'id': action.id }) }}" class="btn btn-primary">Fund this action</a>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     {% endfor %}
 {% endblock %}
