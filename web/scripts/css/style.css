@@ -2,6 +2,22 @@
     font-family: 'CaviarDreams';
     src: url('../../medias/fonts/caviar_dreams/CaviarDreams.ttf') format('OpenType');
 }
+<<<<<<< HEAD
+=======
+
+h1 {
+    font-family: CaviarDreams;
+}
+
+h2 {
+    font-family: CaviarDreams;
+}
+
+p {
+    font-family: GeosansLight;
+}
+
+>>>>>>> 3b9a8892cb5339fefb18c8c201e36adc787a2356
 /* -------- NAVBAR -------- */
 .bg-dark {
     background-color: rgba(63, 75, 89, 0.92) !important;
@@ -132,7 +148,6 @@ h3{
 
 .news button.btn.btn-primary:hover{
     background-color: rgb(94, 176, 168) !important;
-    width: 105px;
     box-shadow: 1px 1px 1px rgba(10, 10, 10, 0.55);
     border: none;
     color: white!important;
@@ -143,6 +158,11 @@ h3{
 }
 
 /* -------- ACTIONS -------- */
+.art {
+    background-color: #EFEFEF;
+    margin: 30px;
+}
+
 .actions button.btn.btn-primary{
     background-color: rgb(115, 198, 190) !important;
     border: none;
@@ -158,6 +178,16 @@ h3{
 
 .actions a{
     color: white!important;
+}
+
+.progress {
+    background-color: transparent!important;
+    border: 1px solid!important;
+    margin: 10px 0px 10px 0px;
+}
+
+.progress-bar{
+    background-color: rgb(115, 198, 190) !important;
 }
 
 /* -------- HEADER -------- */

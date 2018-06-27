@@ -20,7 +20,7 @@
     </div>
 
 
-<div class="actions">
+    <div class="actions art">
     {% for action in actions %}
         <div class="container-fluid">
             <div class="row justify-content-center">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-sm-8">
                     <h1 style="text-align: left">
-                        Action's name : {{ action.name }}
+                        {{ action.name }}
                     </h1>
                     <p>
                         Description : {{ action.descript }}
@@ -37,9 +37,18 @@
                     <p>
                         Action's goal : {{ action.goal|number_format(2, ',', ' ') }}€
                     </p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width:70%">70%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-4">
                     <p>
                         <button type="button" class="btn btn-primary"><a href="{{ path('okeanos_core_actionsView', { 'id': action.id }) }}">Read more</a></button>
                     </p>
+                </div>
+                <div class="col-4">
                     <p>
                         <button type="button" class="btn btn-primary"><a href="{{ path('okeanos_core_donate', { 'id': action.id }) }}">Fund this action</a></button>
                     </p>
@@ -48,5 +57,5 @@
         </div>
         <hr>
     {% endfor %}
-</div>
+    </div>
 {% endblock %}
