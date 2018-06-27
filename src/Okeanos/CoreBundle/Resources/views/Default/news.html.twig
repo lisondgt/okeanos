@@ -18,7 +18,7 @@
     </div>
     <div class="news">
     {% for new in news %}
-        <img src=""> img
+        <img src="{{ asset('medias/img/news/' ~ new.img) }}">
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-sm-2 date" style="text-align: center; border-right: 1px solid;">
@@ -30,9 +30,9 @@
                     </p>
                 </div>
                 <div class="col-sm-4">
-                    <p>
-                        {{ new.title }}
-                    </p>
+                    <h1>
+                        &#171; {{ new.title }} &#187;
+                    </h1>
                     <p>
                         {{ new.descript }}
                     </p>
