@@ -22,6 +22,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class DefaultController extends Controller
 {
@@ -201,15 +202,6 @@ class DefaultController extends Controller
         return new Response($content);
     }
 
-    public function loginAction()
-    {
-        $content = $this
-            ->get('templating')
-            ->render('OkeanosCoreBundle:Default:login.html.twig');
-
-        return new Response($content);
-    }
-
     public function signupAction()
     {
         $content = $this
@@ -254,15 +246,15 @@ class DefaultController extends Controller
 
         // On ajoute les champs de l'entité que l'on veut à notre formulaire
         $formBuilder
-            ->add('login', TextType::class)
-            ->add('pwd', PasswordType::class)
-            ->add('mail', EmailType::class)
-            ->add('permission', ChoiceType::class, array(
+            ->add('username', TextType::class)
+            ->add('password', PasswordType::class)
+            ->add('email', EmailType::class)
+            /*->add('roles', ChoiceType::class, array(
                 'choices' => array(
-                    'Visitor' => 'visitor',
-                    'Administrator' => 'admin'
+                    'Visitor' => 'ROLE_USER',
+                    'Administrator' => 'ROLE_ADMIN'
                 )
-            ))
+            ))*/
             ->add('save', SubmitType::class)
         ;
         

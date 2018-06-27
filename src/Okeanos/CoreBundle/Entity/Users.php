@@ -2,7 +2,9 @@
 
 namespace Okeanos\CoreBundle\Entity;
 
+use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * Users
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="Okeanos\CoreBundle\Repository\UsersRepository")
  */
-class Users
+class Users extends BaseUser
 {
     /**
      * @var int
@@ -19,28 +21,7 @@ class Users
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="login", type="string", length=25)
-     */
-    private $login;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="pwd", type="string", length=255)
-     */
-    private $pwd;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mail", type="string", length=255)
-     */
-    private $mail;
+    protected $id;
 
     /**
      * @var string
@@ -76,72 +57,6 @@ class Users
      * @ORM\Column(name="img", type="text", nullable=true)
      */
     private $img;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="permission", type="string", length=25)
-     */
-    private $permission;
-
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set login
-     *
-     * @param string $login
-     *
-     * @return Users
-     */
-    public function setLogin($login)
-    {
-        $this->login = $login;
-
-        return $this;
-    }
-
-    /**
-     * Get login
-     *
-     * @return string
-     */
-    public function getLogin()
-    {
-        return $this->login;
-    }
-
-    /**
-     * Set pwd
-     *
-     * @param string $pwd
-     *
-     * @return Users
-     */
-    public function setPwd($pwd)
-    {
-        $this->pwd = $pwd;
-
-        return $this;
-    }
-
-    /**
-     * Get pwd
-     *
-     * @return string
-     */
-    public function getPwd()
-    {
-        return $this->pwd;
-    }
 
     /**
      * Set fname
@@ -261,53 +176,5 @@ class Users
     public function getImg()
     {
         return $this->img;
-    }
-
-    /**
-     * Set permission
-     *
-     * @param string $permission
-     *
-     * @return Users
-     */
-    public function setPermission($permission)
-    {
-        $this->permission = $permission;
-
-        return $this;
-    }
-
-    /**
-     * Get permission
-     *
-     * @return string
-     */
-    public function getPermission()
-    {
-        return $this->permission;
-    }
-
-    /**
-     * Set mail
-     *
-     * @param string $mail
-     *
-     * @return Users
-     */
-    public function setMail($mail)
-    {
-        $this->mail = $mail;
-
-        return $this;
-    }
-
-    /**
-     * Get mail
-     *
-     * @return string
-     */
-    public function getMail()
-    {
-        return $this->mail;
     }
 }

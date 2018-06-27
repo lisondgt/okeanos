@@ -48,11 +48,6 @@ okeanos_core_donate:
     requirements:
         id: \d+
 
-okeanos_core_login:
-    path:    /login
-    defaults:
-        _controller: OkeanosCoreBundle:Default:login
-
 okeanos_core_signup:
     path:    /signup
     defaults:
