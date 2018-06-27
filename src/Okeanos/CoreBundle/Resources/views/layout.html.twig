@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="{{ asset('scripts/css/bootstrap/bootstrap-reboot.min.css') }}">
         <link rel="stylesheet" href="{{ asset('scripts/css/bootstrap/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('scripts/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('scripts/css/pascal.css') }}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     {% endblock %}
 </head>
@@ -46,60 +47,62 @@
         <!-- /END CONTAINER -->
 
         <!-- FOOTER -->
-        <p class="backHome"><a href="#top"><img src="{{ asset('medias/img/arrow.png') }}"></a></p>
-        <footer class="footer">
-            <div class="container">
-                <div class="row text-center text-xs-center text-sm-left text-md-left">
-                    <div class="col-xs-12 col-sm-3 col-md-3">
-                        <h5>Services</h5>
-                        <ul class="list-unstyled quick-links">
-                            <li><a href="">How does it work ?</a></li>
-                            <li><a href="">Partners</a></li>
-                            <li><a href="">Become partner</a></li>
-                        </ul>
+        <div class="wrapper-footer">
+            <p class="backHome"><a href="#top"><img src="{{ asset('medias/img/arrow.png') }}"></a></p>
+            <footer class="footer">
+                <div class="container">
+                    <div class="row text-center text-xs-center text-sm-left text-md-left">
+                        <div class="col-xs-12 col-sm-3 col-md-3">
+                            <h5>Services</h5>
+                            <ul class="list-unstyled quick-links">
+                                <li><a href="">How does it work ?</a></li>
+                                <li><a href="">Partners</a></li>
+                                <li><a href="">Become partner</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-3 col-md-3">
+                            <h5>Legal</h5>
+                            <ul class="list-unstyled quick-links">
+                                <li><a href="">Legal Mentions</a></li>
+                                <li><a href="">T.O.S</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-3 col-md-3">
+                            <h5>About us</h5>
+                            <ul class="list-unstyled quick-links">
+                                <li><a href="">Contact</a></li>
+                                <li><a href="">Newsletters</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-3 col-md-3">
+                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                <option selected value="1"><img src="{{ asset('medias/img/en.png') }}"> English</option>
+                                <option value="2"><img src="{{ asset('medias/img/french.png') }}"> Français</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="col-xs-12 col-sm-3 col-md-3">
-                        <h5>Legal</h5>
-                        <ul class="list-unstyled quick-links">
-                            <li><a href="">Legal Mentions</a></li>
-                            <li><a href="">T.O.S</a></li>
-                        </ul>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                            <ul class="list-unstyled list-inline social text-center">
+                                <li class="list-inline-item"><a href=""><img src="{{ asset('medias/img/facebook.svg') }}"></a></li>
+                                <li class="list-inline-item"><a href=""><img src="{{ asset('medias/img/pinterest.svg') }}"></a></li>
+                                <li class="list-inline-item"><a href=""><img src="{{ asset('medias/img/twitter.svg') }}"></a></li>
+                                <li class="list-inline-item"><a href=""><img src="{{ asset('medias/img/instagram.svg') }}"></a></li>
+                                <li class="list-inline-item"><a href=""><img src="{{ asset('medias/img/youtube.svg') }}"></a></li>
+                            </ul>
+                        </div>
+                        </hr>
                     </div>
-                    <div class="col-xs-12 col-sm-3 col-md-3">
-                        <h5>About us</h5>
-                        <ul class="list-unstyled quick-links">
-                            <li><a href="">Contact</a></li>
-                            <li><a href="">Newsletters</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-xs-12 col-sm-3 col-md-3">
-                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                            <option selected value="1"><img src="{{ asset('medias/img/en.png') }}"> English</option>
-                            <option value="2"><img src="{{ asset('medias/img/french.png') }}"> Français</option>
-                        </select>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                            <img src="{{ asset('medias/img/Logo_OKEANOS.png') }}">
+                            <p class="h6">&copy; All right Reserved.<a class="text-green ml-2" href="https://www.sunlimetech.com" target="_blank">Developed by PALM</a></p>
+                        </div>
+                        </hr>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
-                        <ul class="list-unstyled list-inline social text-center">
-                            <li class="list-inline-item"><a href=""><img src="{{ asset('medias/img/facebook.svg') }}"></a></li>
-                            <li class="list-inline-item"><a href=""><img src="{{ asset('medias/img/pinterest.svg') }}"></a></li>
-                            <li class="list-inline-item"><a href=""><img src="{{ asset('medias/img/twitter.svg') }}"></a></li>
-                            <li class="list-inline-item"><a href=""><img src="{{ asset('medias/img/instagram.svg') }}"></a></li>
-                            <li class="list-inline-item"><a href=""><img src="{{ asset('medias/img/youtube.svg') }}"></a></li>
-                        </ul>
-                    </div>
-                    </hr>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
-                        <img src="{{ asset('medias/img/Logo_OKEANOS.png') }}">
-                        <p class="h6">&copy All right Reserved.<a class="text-green ml-2" href="https://www.sunlimetech.com" target="_blank">Developed by PALM</a></p>
-                    </div>
-                    </hr>
-                </div>
-            </div>
-        </footer>
+            </footer>
+        </div>
         <!-- /END FOOTER -->
     </div>
 
