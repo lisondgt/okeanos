@@ -7,14 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}Okeanos{% endblock %}</title>
     {% block css %}
-        <link rel="stylesheet" href="{{ asset('scripts/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('scripts/css/bootstrap/bootstrap-grid.min.css') }}">
         <link rel="stylesheet" href="{{ asset('scripts/css/bootstrap/bootstrap-reboot.min.css') }}">
         <link rel="stylesheet" href="{{ asset('scripts/css/bootstrap/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('scripts/css/style.css') }}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     {% endblock %}
 </head>
 <body>
+<div id="top"></div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a href="{{ path('okeanos_core_homepage') }}" class="navbar-brand"><img src="{{ asset('medias/img/logo.png') }}"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +26,7 @@
                 <li class="nav-item{% block activePageHome %}{% endblock %}"><a href="{{ path('okeanos_core_homepage') }}" class="nav-link">Home</a></li>
                 <li class="nav-item{% block activePageNews %}{% endblock %}"><a href="{{ path('okeanos_core_news') }}" class="nav-link">News</a></li>
                 <li class="nav-item{% block activePageActions %}{% endblock %}"><a href="{{ path('okeanos_core_actions') }}" class="nav-link">Actions</a></li>
-                <li class="nav-item{% block activePageDonate %}{% endblock %}"><a href="{{ path('okeanos_core_donate') }}" class="nav-link">Found</a></li>
+                <li class="nav-item{% block activePageDonate %}{% endblock %}"><a href="{{ path('okeanos_core_donate') }}" class="nav-link">Fund</a></li>
             </ul>
             <div class="input-group col-md-3">
                 <input class="form-control py-2 border-right-0 border" type="search" placeholder="Search" id="example-search-input">
@@ -35,7 +36,11 @@
                 </button>
               </span>
             </div>
+<<<<<<< HEAD
             <a href="{{ path('login') }}" class="nav-link"><i class="fas fa-user"></i></a>
+=======
+            <a href="{{ path('okeanos_core_login') }}" class="nav-link"><i class="fas fa-user"></i> Connexion</a>
+>>>>>>> 40ce499592395f1e8db84e26f7ff6316c170ca26
         </div>
     </nav>
     <div class="wrapper-main">
@@ -45,9 +50,59 @@
         <!-- /END CONTAINER -->
 
         <!-- FOOTER -->
+        <p class="backHome"><a href="#top"><img src="{{ asset('medias/img/arrow.png') }}"></a></p>
         <footer class="footer">
-            <p>Okeanos &copy; 2018</p>
-            <p>Developed by PALM</p>
+            <div class="container">
+                <div class="row text-center text-xs-center text-sm-left text-md-left">
+                    <div class="col-xs-12 col-sm-3 col-md-3">
+                        <h5>Services</h5>
+                        <ul class="list-unstyled quick-links">
+                            <li><a href="">How does it work ?</a></li>
+                            <li><a href="">Partners</a></li>
+                            <li><a href="">Become partner</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3">
+                        <h5>Legal</h5>
+                        <ul class="list-unstyled quick-links">
+                            <li><a href="">Legal Mentions</a></li>
+                            <li><a href="">T.O.S</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3">
+                        <h5>About us</h5>
+                        <ul class="list-unstyled quick-links">
+                            <li><a href="">Contact</a></li>
+                            <li><a href="">Newsletters</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3">
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                            <option selected value="1">English</option>
+                            <option value="2">Français</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                        <ul class="list-unstyled list-inline social text-center">
+                            <li class="list-inline-item"><a href=""><img src="{{ asset('medias/img/facebook.svg') }}"></a></li>
+                            <li class="list-inline-item"><a href=""><img src="{{ asset('medias/img/pinterest.svg') }}"></a></li>
+                            <li class="list-inline-item"><a href=""><img src="{{ asset('medias/img/twitter.svg') }}"></a></li>
+                            <li class="list-inline-item"><a href=""><img src="{{ asset('medias/img/instagram.svg') }}"></a></li>
+                            <li class="list-inline-item"><a href=""><img src="{{ asset('medias/img/youtube.svg') }}"></a></li>
+                        </ul>
+                    </div>
+                    </hr>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                        <img src="{{ asset('medias/img/Logo_OKEANOS.png') }}">
+                        <p class="h6">&copy All right Reserved.<a class="text-green ml-2" href="https://www.sunlimetech.com" target="_blank">Developed by PALM</a></p>
+                    </div>
+                    </hr>
+                </div>
+            </div>
         </footer>
         <!-- /END FOOTER -->
     </div>
@@ -56,6 +111,10 @@
     <script src="{{ asset('scripts/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('scripts/js/bootstrap/bootstrap.min.js') }}"></script>
     <script src="{{ asset('scripts/js/main.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
     <!-- /END JS SCRIPTS -->
 </body>
 </html>
