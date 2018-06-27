@@ -1,63 +1,78 @@
 {# src/Okeanos/CoreBundle/Resources/views/Default/newsAdd.html.twig #}
 {% extends 'OkeanosCoreBundle::layout.html.twig' %}
 {% block title %}Ajouter une news | News | {{ parent() }}{% endblock %}
-{% block activePageNews %} active{% endblock %}
 {% block container %}
-    {{ form_start(form) }}
+    <div class="row justify-content-center mt-3">
+        <div class="col-sm-6">
+            <h1>Add news</h1>
+            {{ form_start(form) }}
 
-    {# Les erreurs générales du formulaire. #}
-    {{ form_errors(form) }}
+            {# Les erreurs générales du formulaire. #}
+            {{ form_errors(form) }}
 
-    <div class="form-group">
-        {# Génération du label. #}
-        {{ form_label(form.title, 'Title :') }}
+            <div class="form-group">
+                {# Génération du label. #}
+                {{ form_label(form.title, 'Title :') }}
 
-        {# Affichage des erreurs pour ce champ précis. #}
-        {{ form_errors(form.title) }}
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.title) }}
 
-        {# Génération de l'input. #}
-        {{ form_widget(form.title, {'attr': {'class': 'form-control', 'placeholder': 'Enter a title'}}) }}
+                {# Génération de l'input. #}
+                {{ form_widget(form.title, {'attr': {'class': 'form-control', 'placeholder': 'Enter a title'}}) }}
+            </div>
+
+            <div class="form-group">
+                {# Génération du label. #}
+                {{ form_label(form.descript, 'Description :') }}
+
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.descript) }}
+
+                {# Génération de l'input. #}
+                {{ form_widget(form.descript, {'attr': {'class': 'form-control', 'placeholder': 'Enter a short description'}}) }}
+            </div>
+
+            <div class="form-group">
+                {# Génération du label. #}
+                {{ form_label(form.content, 'Content :') }}
+
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.content) }}
+
+                {# Génération de l'input. #}
+                {{ form_widget(form.content, {'attr': {'class': 'form-control', 'placeholder': 'Enter your content'}}) }}
+            </div>
+
+            <div class="form-group">
+                {# Génération du label. #}
+                {{ form_label(form.img, 'Image :') }}
+
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.img) }}
+
+                {# Génération de l'input. #}
+                {{ form_widget(form.img, {'attr': {'class': 'form-control', 'placeholder': 'Enter an image\'s name'}}) }}
+            </div>
+
+            <div class="form-group">
+                {# Génération du label. #}
+                {{ form_label(form.user, 'Author :') }}
+
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.user) }}
+
+                {# Génération de l'input. #}
+                {{ form_widget(form.user, {'attr': {'class': 'form-control', 'placeholder': 'Enter an user ID'}}) }}
+            </div>
+
+            {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget. #}
+            {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+
+            {# Génération automatique des champs pas encore écrits. Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !) et tous les autres champs cachés (type "hidden"). #}
+            {{ form_rest(form) }}
+
+            {# Fermeture de la balise "form" du formulaire HTML. #}
+            {{ form_end(form) }}
+        </div>
     </div>
-
-    <div class="form-group">
-        {# Génération du label. #}
-        {{ form_label(form.descript, 'Description :') }}
-
-        {# Affichage des erreurs pour ce champ précis. #}
-        {{ form_errors(form.descript) }}
-
-        {# Génération de l'input. #}
-        {{ form_widget(form.descript, {'attr': {'class': 'form-control', 'placeholder': 'Enter a short description'}}) }}
-    </div>
-
-    <div class="form-group">
-        {# Génération du label. #}
-        {{ form_label(form.img, 'Image :') }}
-
-        {# Affichage des erreurs pour ce champ précis. #}
-        {{ form_errors(form.img) }}
-
-        {# Génération de l'input. #}
-        {{ form_widget(form.img, {'attr': {'class': 'form-control', 'placeholder': 'Enter an image\'s name'}}) }}
-    </div>
-
-    <div class="form-group">
-        {# Génération du label. #}
-        {{ form_label(form.user, 'User :') }}
-
-        {# Affichage des erreurs pour ce champ précis. #}
-        {{ form_errors(form.user) }}
-
-        {# Génération de l'input. #}
-        {{ form_widget(form.user, {'attr': {'class': 'form-control', 'placeholder': 'Enter an user ID'}}) }}
-    </div>
-
-    {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget. #}
-    {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
-
-    {# Génération automatique des champs pas encore écrits. Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !) et tous les autres champs cachés (type "hidden"). #}
-    {{ form_rest(form) }}
-
-    {# Fermeture de la balise "form" du formulaire HTML. #}
-    {{ form_end(form) }}
 {% endblock %}

@@ -150,6 +150,7 @@ class DefaultController extends Controller
         $formBuilder
             ->add('name', TextType::class)
             ->add('descript', TextareaType::class)
+            ->add('content', TextareaType::class)
             ->add('img', TextareaType::class)
             ->add('goal', IntegerType::class)
             ->add('status', ChoiceType::class, array(
@@ -256,11 +257,58 @@ class DefaultController extends Controller
         ));
     }
 
-    public function signupAction()
+    public function signupAction(Request $request)
     {
+        // On crée un objet Users
+        $user = new Users();
+        
+        // On crée le FormBuilder grâce au service form factory
+        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $user);
+
+        // On ajoute les champs de l'entité que l'on veut à notre formulaire
+        $formBuilder
+            ->add('username', TextType::class)
+            ->add('password', PasswordType::class)
+            ->add('email', EmailType::class)
+            /*->add('roles', ChoiceType::class, array(
+                'choices' => array(
+                    'Visitor' => 'ROLE_USER',
+                    'Administrator' => 'ROLE_ADMIN'
+                )
+            ))*/
+            ->add('save', SubmitType::class)
+        ;
+        
+        // A partir du formBuilder, on génère le formulaire
+        $form = $formBuilder->getForm();
+
+        // Si la requête est en POST
+        if($request->isMethod('POST'))
+        {
+            // On fait le lien Requête <-> Formulaire
+            // A partir de maintenant, la variable $user contient les valeurs entrées dans le formulaire par le visiteur
+            $form->handleRequest($request);
+
+            // On vérifie que les valeurs entrées sont correctes
+            if($form->isValid())
+            {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+
+                $request->getSession()->getFlashBag()->add('notice', 'Utilisateur bien enregistré');
+
+                // On redirige vers la page du profil utilisateur
+                return $this->redirectToRoute('login');
+            }
+        }
+
+        // On passe la méthode createView() du formulaire à la vue afin qu'elle puisse afficher le formulaire toute seule
         $content = $this
             ->get('templating')
-            ->render('OkeanosCoreBundle:Default:signup.html.twig');
+            ->render('OkeanosCoreBundle:Default:signup.html.twig', array(
+                'form' => $form->createView(),
+            ));
         
         return new Response($content);
     }
@@ -332,9 +380,7 @@ class DefaultController extends Controller
                 $request->getSession()->getFlashBag()->add('notice', 'Utilisateur bien enregistré');
 
                 // On redirige vers la page du profil utilisateur
-                return $this->redirectToRoute('okeanos_core_profile', array(
-                    'id' => $user->getId()
-                ));
+                return $this->redirectToRoute('login');
             }
         }
 
@@ -345,6 +391,15 @@ class DefaultController extends Controller
                 'form' => $form->createView(),
             ));
         
+        return new Response($content);
+    }
+
+    public function adminAction()
+    {
+        $content = $this
+            ->get('templating')
+            ->render('OkeanosCoreBundle:Default:admin.html.twig');
+
         return new Response($content);
     }
 }

@@ -30,7 +30,7 @@
                 <li class="nav-item{% block activePageDonate %}{% endblock %}"><a href="{{ path('okeanos_core_donate') }}" class="nav-link">Fund</a></li>
             </ul>
             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                <a href="{{ path('logout') }}" class="nav-link"><i class="fas fa-user"></i> Déconnexion</a>
+                <a href="{{ path('logout') }}" class="nav-link"><i class="fas fa-user"></i> Déconnexion</a> | <a href="{{ path('okeanos_core_profile') }}" class="nav-link">{{ app.user.username }}</a>
             {% else %}
                 <a href="{{ path('login') }}" class="nav-link"><i class="fas fa-user"></i> Connexion</a>
             {% endif %}

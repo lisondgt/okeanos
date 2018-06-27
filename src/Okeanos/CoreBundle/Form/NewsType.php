@@ -22,6 +22,7 @@ class NewsType extends AbstractType
         $builder
             ->add('title', TextType::class)
             ->add('descript', TextareaType::class)
+            ->add('content', TextareaType::class)
             ->add('img', TextareaType::class)
             ->add('user', EntityType::class, array(
                 'class' => 'OkeanosCoreBundle:Users',

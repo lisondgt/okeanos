@@ -67,3 +67,8 @@ okeanos_core_usersAdd:
     path:    /admin/users/add
     defaults:
         _controller: OkeanosCoreBundle:Default:usersAdd
+
+okeanos_core_admin:
+    path:    /admin
+    defaults:
+        _controller: OkeanosCoreBundle:Default:admin
