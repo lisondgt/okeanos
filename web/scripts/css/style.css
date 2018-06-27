@@ -4,25 +4,26 @@
 }
 
 @font-face{
-    font-family: 'GeosansLight';
-    src: url('../../medias/fonts/caviar_dreams/GeosansLight.ttf') format('OpenType');
+    font-family: 'CaviarDreams_Bold';
+    src: url('../../medias/fonts/caviar_dreams/CaviarDreams_Bold.ttf') format('OpenType');
 }
 
 h1 {
+    font-family: CaviarDreams_Bold;
+}
+
+h2 {
     font-weight: bold;
     font-family: CaviarDreams;
 }
 
-h2 {
-    font-family: CaviarDreams;
-}
-
 h3 {
+    font-weight: bold;
     font-family: CaviarDreams;
 }
 
 p {
-    font-family: GeosansLight;
+    font-family: Helvetica, Arial, Verdana, sans-serif;
 }
 
 /* -------- NAVBAR -------- */
@@ -259,9 +260,10 @@ li.active{
 }
 
 .index-h3{
+    margin: auto;
+    font-weight: bold;
     text-align: center;
     padding-bottom: 90px;
-    padding-left: 20%;
 }
 
 .index-seabin{
@@ -402,4 +404,20 @@ select#inlineFormCustomSelect.custom-select.mr-sm-2{
         padding-bottom: 0px;
         margin-bottom: 10px;
     }
+}
+
+.lison-relative{
+    position: relative;
+}
+
+.lison-relative img{
+    position: absolute;
+    left: 23px;
+    top: 6px;
+    height: 35px;
+    width: 50px;
+}
+
+.lison-relative select{
+    padding-left: 60px;
 }
