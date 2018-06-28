@@ -28,11 +28,15 @@
                 <li class="nav-item{% block activePageNews %}{% endblock %}"><a href="{{ path('okeanos_core_news') }}" class="nav-link">News</a></li>
                 <li class="nav-item{% block activePageActions %}{% endblock %}"><a href="{{ path('okeanos_core_actions') }}" class="nav-link">Actions</a></li>
                 <li class="nav-item{% block activePageDonate %}{% endblock %}"><a href="{{ path('okeanos_core_donate') }}" class="nav-link">Fund</a></li>
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <li class="nav-item{% block activePageAdmin %}{% endblock %}"><a href="{{ path('okeanos_core_admin') }}" class="nav-link">Administration</a></li>
+                {% else %}
+                {% endif %}
             </ul>
             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                <a href="{{ path('logout') }}" class="nav-link"><i class="fas fa-user"></i> Déconnexion</a> | <a href="{{ path('okeanos_core_profile') }}" class="nav-link">{{ app.user.username }}</a>
+                <a href="{{ path('logout') }}" class="nav-link"><i class="fas fa-user"></i> Logout</a> | <a href="{{ path('okeanos_core_profile') }}" class="nav-link">{{ app.user.username }}</a>
             {% else %}
-                <a href="{{ path('login') }}" class="nav-link"><i class="fas fa-user"></i> Connexion</a>
+                <a href="{{ path('login') }}" class="nav-link"><i class="fas fa-user"></i> Login</a>
             {% endif %}
         </div>
     </nav>
@@ -66,8 +70,8 @@
                         <div class="col-xs-12 col-sm-3 col-md-3">
                             <h5>About us</h5>
                             <ul class="list-unstyled quick-links">
-                                <li><a href="">Contact</a></li>
-                                <li><a href="">Newsletters</a></li>
+                                <li><a href="mailto:projectokeanos@gmail.com">Contact</a></li>
+                                <li><a href="#">Newsletters</a></li>
                             </ul>
                         </div>
                         <div class="col-xs-12 col-sm-3 col-md-3">
