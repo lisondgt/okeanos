@@ -108,7 +108,7 @@ class DefaultController extends Controller
             ->getRepository('OkeanosCoreBundle:Actions');
         
         $actions = $repository->findAll();
-        $donates = $repDon->findBy(['action' => $actions]);
+        $donates = $repDon->findAll();
 
         $content = $this
             ->get('templating')
