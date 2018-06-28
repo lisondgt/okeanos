@@ -84,11 +84,9 @@ class DefaultController extends Controller
             $em->persist($news);
             $em->flush();
 
-            $request->getSession()->getFlashBag()->add('notice', 'News bien enregistrée');
+            $request->getSession()->getFlashBag()->add('notice', 'News registered');
 
-            return $this->redirectToRoute('okeanos_core_news', array(
-                'id' => $news->getId()
-            ));
+            return $this->redirectToRoute('okeanos_core_newsAdd');
         }
 
         $content = $this
@@ -102,17 +100,20 @@ class DefaultController extends Controller
 
     public function actionsAction()
     {
+        $repDon = $this->getDoctrine()->getManager()->getRepository('OkeanosCoreBundle:Donates');
+
         $repository = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('OkeanosCoreBundle:Actions');
         
         $actions = $repository->findAll();
+        $donates = $repDon->findBy(['action' => $actions]);
 
         $content = $this
             ->get('templating')
             ->render('OkeanosCoreBundle:Default:actions.html.twig',
-                array('actions' => $actions));
+                array('actions' => $actions, 'donates' => $donates));
 
         return new Response($content);
     }
@@ -179,12 +180,10 @@ class DefaultController extends Controller
                 $em->persist($action);
                 $em->flush();
 
-                $request->getSession()->getFlashBag()->add('notice', 'Action bien enregistrée');
+                $request->getSession()->getFlashBag()->add('notice', 'Action registered !');
 
                 // On redirige vers la page du profil utilisateur
-                return $this->redirectToRoute('okeanos_core_actions', array(
-                    'id' => $action->getId()
-                ));
+                return $this->redirectToRoute('okeanos_core_actionsAdd');
             }
         }
 
@@ -202,18 +201,15 @@ class DefaultController extends Controller
     {
         if($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED'))
         {
+            $user = $this->getUser();
             $donate = new Donates();
+            $donate->setUser($user);
             $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $donate);
 
             $formBuilder
                 ->add('action', EntityType::class, array(
                     'class' => 'OkeanosCoreBundle:Actions',
                     'choice_label' => 'name',
-                    'multiple' => false,
-                ))
-                ->add('user', EntityType::class, array(
-                    'class' => 'OkeanosCoreBundle:Users',
-                    'choice_label' => 'id',
                     'multiple' => false,
                 ))
                 ->add('amount', IntegerType::class)
@@ -231,11 +227,9 @@ class DefaultController extends Controller
                     $em->persist($donate);
                     $em->flush();
         
-                    $request->getSession()->getFlashBag()->add('notice', 'Your donate has been registered');
+                    $request->getSession()->getFlashBag()->add('notice', 'Your donation has been registered !');
         
-                    return $this->redirectToRoute('okeanos_core_donate', array(
-                        'id' => $donate->getId()
-                    ));
+                    return $this->redirectToRoute('okeanos_core_profile');
                 }
             }
 
@@ -296,7 +290,7 @@ class DefaultController extends Controller
                 $em->persist($user);
                 $em->flush();
 
-                $request->getSession()->getFlashBag()->add('notice', 'Utilisateur bien enregistré');
+                $request->getSession()->getFlashBag()->add('notice', 'You have been registered');
 
                 // On redirige vers la page du profil utilisateur
                 return $this->redirectToRoute('login');
@@ -315,9 +309,19 @@ class DefaultController extends Controller
 
     public function profileAction()
     {
+        $user = $this->getUser();
+
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('OkeanosCoreBundle:Donates');
+        
+        $donates = $repository->findBy(['user' => $user]);
+
         $content = $this
             ->get('templating')
-            ->render('OkeanosCoreBundle:Default:profile.html.twig');
+            ->render('OkeanosCoreBundle:Default:profile.html.twig',
+                array('donates' => $donates));
         
         return new Response($content);
     }
@@ -377,10 +381,10 @@ class DefaultController extends Controller
                 $em->persist($user);
                 $em->flush();
 
-                $request->getSession()->getFlashBag()->add('notice', 'Utilisateur bien enregistré');
+                $request->getSession()->getFlashBag()->add('notice', 'User registered');
 
                 // On redirige vers la page du profil utilisateur
-                return $this->redirectToRoute('login');
+                return $this->redirectToRoute('okeanos_core_users');
             }
         }
 

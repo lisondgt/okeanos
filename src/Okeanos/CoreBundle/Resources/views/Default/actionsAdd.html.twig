@@ -4,6 +4,9 @@
 {% block container %}
     <div class="row justify-content-center mt-3">
         <div class="col-sm-6">
+            {% for message in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success" role="alert">{{ message }}</div>
+            {% endfor %}
             <h1>Add an action</h1>
             {{ form_start(form) }}
 

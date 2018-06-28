@@ -26,6 +26,13 @@
                         <p>
                             Goal : {{ action.goal|number_format(2, ',', ' ') }}€
                         </p>
+                        {% set total = 0 %}
+                        {% for donate in donates if donate.action.id == action.id %}
+                            {% set total = total + donate.amount %}
+                        {% endfor %}
+                        <p>
+                            Total of donations : {{ total|number_format(2, ',', ' ') }}€
+                        </p>
                         <!--<div class="progress">
                             <div class="progress-bar" style="width:70%">70%</div>
                         </div>-->

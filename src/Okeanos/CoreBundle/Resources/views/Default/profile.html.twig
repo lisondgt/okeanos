@@ -4,9 +4,44 @@
 {% block container %}
     <div class="row justify-content-center mt-3">
         <div class="col-sm-6">
-            <p>Username : {{ app.user.username }}</p>
-            <p>First name : {{ app.user.fname }}</p>
-            <p>Last name : {{ app.user.lname }}</p>
+            {% for message in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success" role="alert">{{ message }}</div>
+            {% endfor %}
+            <h1>My profile</h1>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Username : {{ app.user.username }}</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <h2>My donations :</h2>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Action</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Goal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for donates in donates %}
+                                <tr>
+                                    <th scope="row">{{ donates.action.name }}</th>
+                                    <th scope="row">{{ donates.amount|number_format(2, ',', ' ') }}€</th>
+                                    <th scope="row">{{ donates.action.goal|number_format(2, ',', ' ') }}€</th>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
