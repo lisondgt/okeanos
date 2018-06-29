@@ -290,8 +290,6 @@ class DefaultController extends Controller
                 $em->persist($user);
                 $em->flush();
 
-                $request->getSession()->getFlashBag()->add('notice', 'You have been registered');
-
                 // On redirige vers la page du profil utilisateur
                 return $this->redirectToRoute('login');
             }

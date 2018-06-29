@@ -28,9 +28,8 @@
                 <li class="nav-item{% block activePageNews %}{% endblock %}"><a href="{{ path('okeanos_core_news') }}" class="nav-link">News</a></li>
                 <li class="nav-item{% block activePageActions %}{% endblock %}"><a href="{{ path('okeanos_core_actions') }}" class="nav-link">Actions</a></li>
                 <li class="nav-item{% block activePageDonate %}{% endblock %}"><a href="{{ path('okeanos_core_donate') }}" class="nav-link">Fund</a></li>
-                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                {% if is_granted('ROLE_ADMIN') %}
                     <li class="nav-item{% block activePageAdmin %}{% endblock %}"><a href="{{ path('okeanos_core_admin') }}" class="nav-link">Administration</a></li>
-                {% else %}
                 {% endif %}
             </ul>
             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
